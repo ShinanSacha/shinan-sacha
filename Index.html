@@ -11,9 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --bg:#0b1510; --ink:#e8eee9; --muted:#cfe0d5; --gold:#d9b56f; --edge:rgba(217,181,111,.55);
-}
+:root{ --bg:#0b1510; --ink:#e8eee9; --muted:#cfe0d5; --gold:#d9b56f; --edge:rgba(217,181,111,.55); }
 
 /* base */
 *{box-sizing:border-box}
@@ -46,38 +44,7 @@ p{color:var(--muted); margin:.4rem 0 1rem}
   background:linear-gradient(90deg,transparent, rgba(217,181,111,.9) 20%, rgba(217,181,111,.9) 80%, transparent);
   pointer-events:none;
 }
-
-/* BACKGROUNDS APPLIED DIRECTLY ON SECTIONS (no ::before) */
-.band{
-  background-position:center;
-  background-size:cover;
-  background-repeat:no-repeat;
-}
-.band.about{
-  background-image:
-    linear-gradient(180deg,rgba(0,0,0,.26),rgba(0,0,0,.30)),
-    url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=2000&q=80');
-}
-.band.redef{
-  background-image:
-    linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.26)),
-    url('https://images.unsplash.com/photo-1502944550040-75345974929e?auto=format&fit=crop&w=2000&q=80');
-}
-.band.systems{
-  background-image:
-    linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.24)),
-    url('https://images.unsplash.com/photo-1607705729272-6a6b7799e3e2?auto=format&fit=crop&w=2000&q=80');
-}
-.band.adopt{
-  background-image:
-    linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.30)),
-    url('https://images.unsplash.com/photo-1605727216805-0e36f1cf0c36?auto=format&fit=crop&w=2000&q=80');
-}
-.band.contact{
-  background-image:
-    linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.28)),
-    url('https://images.unsplash.com/photo-1601645199213-3dd98ec6c9dc?auto=format&fit=crop&w=2000&q=80');
-}
+.minh{ min-height:420px }  /* makes sure background is visible even if text is short */
 
 /* layout */
 .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(1rem,3vw,2rem)}
@@ -168,7 +135,7 @@ form.card button{margin-top:.4rem}
     <button class="menu" aria-expanded="false" aria-controls="mnav">Menu</button>
     <nav id="mnav" class="site-nav" aria-label="Main">
       <a href="#about">About</a>
-      <a href="#redefining">Redefining Luxury</a>
+      <!-- Removed Redefining Luxury from top nav as requested -->
       <a href="#systems">Living Systems</a>
       <a href="#activities">Activities</a>
       <a href="#adopt">Adopt a Tree</a>
@@ -189,38 +156,38 @@ form.card button{margin-top:.4rem}
     </div>
   </section>
 
-  <!-- ABOUT (textured) -->
-  <section id="about" class="section band about">
+  <!-- ABOUT (with background applied inline) -->
+  <section id="about" class="section minh"
+    style="background:
+      linear-gradient(180deg,rgba(0,0,0,.26),rgba(0,0,0,.30)),
+      url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;">
     <div class="container">
       <h2>About Us</h2>
       <p class="kicker"><strong>Shinan Sacha</strong> means “forest of knowledge.” A sanctuary in the making where luxury is measured by coherence—nature, technology, and culture aligned to give more than they take.</p>
     </div>
   </section>
 
-  <!-- REDEFINING LUXURY (textured; follows About) -->
-  <section id="redefining" class="section band redef">
+  <!-- REDEFINING LUXURY (kept as a section AFTER About; not in top nav) -->
+  <section id="redefining" class="section minh"
+    style="background:
+      linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.26)),
+      url('https://images.unsplash.com/photo-1502944550040-75345974929e?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;">
     <div class="container">
       <h2>Redefining Luxury</h2>
       <div class="kicker">Old versus new—excess versus coherence.</div>
       <div class="grid-3">
         <article class="card">
-          <div class="icon">
-            <svg viewBox="0 0 24 24"><path d="M4 7h16M7 4v6"/></svg>
-          </div>
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M4 7h16M7 4v6"/></svg></div>
           <h3>Old Model</h3>
           <p>Excess & display. Hidden extraction. Debt & waste.</p>
         </article>
         <article class="card">
-          <div class="icon">
-            <svg viewBox="0 0 24 24"><path d="M12 3v18M4 12h16"/></svg>
-          </div>
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 3v18M4 12h16"/></svg></div>
           <h3>New Model</h3>
           <p>Coherence & restoration. Fair pay & culture. Living systems.</p>
         </article>
         <article class="card">
-          <div class="icon">
-            <svg viewBox="0 0 24 24"><path d="M12 21c4-3 7-6 7-10a7 7 0 10-14 0c0 4 3 7 7 10z"/></svg>
-          </div>
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 21c4-3 7-6 7-10a7 7 0 10-14 0c0 4 3 7 7 10z"/></svg></div>
           <h3>Guests as Stewards</h3>
           <p>Every stay restores the forest and strengthens the local web.</p>
         </article>
@@ -228,29 +195,26 @@ form.card button{margin-top:.4rem}
     </div>
   </section>
 
-  <!-- LIVING SYSTEMS (textured) -->
-  <section id="systems" class="section band systems">
+  <!-- LIVING SYSTEMS (background inline) -->
+  <section id="systems" class="section minh"
+    style="background:
+      linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.24)),
+      url('https://images.unsplash.com/photo-1607705729272-6a6b7799e3e2?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;">
     <div class="container">
       <h2>Living Systems</h2>
       <div class="grid-3">
         <article class="card">
-          <div class="icon">
-            <svg viewBox="0 0 24 24"><path d="M4 8h16M6 16h12"/></svg>
-          </div>
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M4 8h16M6 16h12"/></svg></div>
           <h3>Nature × Tech</h3>
           <p>Solar, water, and soil systems tuned to the forest. Quiet tech that protects life.</p>
         </article>
         <article class="card">
-          <div class="icon">
-            <svg viewBox="0 0 24 24"><path d="M12 21c4-3 7-6 7-10a7 7 0 10-14 0c0 4 3 7 7 10z"/></svg>
-          </div>
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 21c4-3 7-6 7-10a7 7 0 10-14 0c0 4 3 7 7 10z"/></svg></div>
           <h3>Community First</h3>
           <p>Fair wages, artisan partnership, cultural integrity. Wealth that circulates locally.</p>
         </article>
         <article class="card">
-          <div class="icon">
-            <svg viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 14h6v6h-6z"/></svg>
-          </div>
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 14h6v6h-6z"/></svg></div>
           <h3>Regeneration</h3>
           <p>Reforestation, conservation, and design that gives more than it takes.</p>
         </article>
@@ -258,7 +222,7 @@ form.card button{margin-top:.4rem}
     </div>
   </section>
 
-  <!-- ACTIVITIES (image+card, 4 items like Partners) -->
+  <!-- ACTIVITIES -->
   <section id="activities" class="section">
     <div class="container">
       <h2>Activities</h2>
@@ -266,38 +230,29 @@ form.card button{margin-top:.4rem}
       <div class="grid-2">
         <article class="imgcard">
           <img src="https://images.unsplash.com/photo-1487700160041-babef9c3cb55?auto=format&fit=crop&w=900&q=80" alt="Botanical Garden">
-          <div class="card">
-            <h3>Botanical Garden</h3>
-            <p>A curated path through native species, ethnobotany notes, and seed nurseries.</p>
-          </div>
+          <div class="card"><h3>Botanical Garden</h3><p>A curated path through native species, ethnobotany notes, and seed nurseries.</p></div>
         </article>
         <article class="imgcard">
           <img src="https://images.unsplash.com/photo-1527422477831-6f444c76f44e?auto=format&fit=crop&w=900&q=80" alt="Mariposario (Butterfly House)">
-          <div class="card">
-            <h3>Mariposario</h3>
-            <p>Butterflies, host plants, and life-cycle stations—habitat restoration in motion.</p>
-          </div>
+          <div class="card"><h3>Mariposario</h3><p>Butterflies, host plants, and life-cycle stations—habitat restoration in motion.</p></div>
         </article>
         <article class="imgcard">
           <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=900&q=80" alt="Medicine Hut">
-          <div class="card">
-            <h3>Medicine Hut</h3>
-            <p>Guided tastings of traditional herbal mixes and forest teas (non-psychoactive).</p>
-          </div>
+          <div class="card"><h3>Medicine Hut</h3><p>Guided tastings of traditional herbal mixes and forest teas (non-psychoactive).</p></div>
         </article>
         <article class="imgcard">
           <img src="https://images.unsplash.com/photo-1508186225823-0963cf9ab0de?auto=format&fit=crop&w=900&q=80" alt="River & Trails">
-          <div class="card">
-            <h3>River & Trails</h3>
-            <p>Boardwalks and lake paths for birdwatching, sunset drifts, and quiet observation.</p>
-          </div>
+          <div class="card"><h3>River & Trails</h3><p>Boardwalks and lake paths for birdwatching, sunset drifts, and quiet observation.</p></div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ADOPT A TREE (textured) -->
-  <section id="adopt" class="section band adopt">
+  <!-- ADOPT A TREE (background inline) -->
+  <section id="adopt" class="section minh"
+    style="background:
+      linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.30)),
+      url('https://images.unsplash.com/photo-1605727216805-0e36f1cf0c36?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;">
     <div class="container">
       <h2>Adopt a Tree</h2>
       <p>Help reforest and protect habitats. Sponsor a tree and receive updates, GPS tagging, and seasonal notes.</p>
@@ -310,7 +265,7 @@ form.card button{margin-top:.4rem}
     </div>
   </section>
 
-  <!-- PARTNERS (plain) -->
+  <!-- PARTNERS -->
   <section id="partners" class="section">
     <div class="container">
       <h2>Partners</h2>
@@ -318,24 +273,21 @@ form.card button{margin-top:.4rem}
       <div class="grid-2">
         <article class="imgcard">
           <img src="https://images.unsplash.com/photo-1501117716987-c8e3f6a0f6af?auto=format&fit=crop&w=900&q=80" alt="Hotel Mercedes">
-          <div class="card">
-            <h3>Hotel Mercedes</h3>
-            <p>The oldest hotel in town—your comfortable base before the journey to the retreat.</p>
-          </div>
+          <div class="card"><h3>Hotel Mercedes</h3><p>The oldest hotel in town—your comfortable base before the journey to the retreat.</p></div>
         </article>
         <article class="imgcard">
           <img src="https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?auto=format&fit=crop&w=900&q=80" alt="La Cabaña Lodge">
-          <div class="card">
-            <h3>La Cabaña Lodge</h3>
-            <p>Gateway to the island and jungle, operated by trusted local hosts.</p>
-          </div>
+          <div class="card"><h3>La Cabaña Lodge</h3><p>Gateway to the island and jungle, operated by trusted local hosts.</p></div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT (textured) -->
-  <section id="contact" class="section band contact">
+  <!-- CONTACT (background inline) -->
+  <section id="contact" class="section minh grid"
+    style="background:
+      linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.28)),
+      url('https://images.unsplash.com/photo-1601645199213-3dd98ec6c9dc?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;">
     <div class="container grid-2">
       <div>
         <h2>Contact / Bookings</h2>
@@ -358,7 +310,7 @@ form.card button{margin-top:.4rem}
     <div>Shinan Sacha</div>
     <nav>
       <a href="#about">About</a>
-      <a href="#redefining">Redefining Luxury</a>
+      <!-- Not listed in nav on purpose -->
       <a href="#systems">Systems</a>
       <a href="#activities">Activities</a>
       <a href="#adopt">Adopt a Tree</a>
