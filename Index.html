@@ -15,7 +15,9 @@
   --bg:#0b1510; --ink:#e8eee9; --muted:#cfe0d5; --gold:#d9b56f; --edge:rgba(217,181,111,.55);
 }
 
-*{box-sizing:border-box} html,body{margin:0;padding:0}
+/* base */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
 body{
   color:var(--ink);
   background:linear-gradient(180deg,#08130f,#0b1510 40%,#09140f);
@@ -25,49 +27,58 @@ body{
 }
 .container{width:min(1120px,92vw); margin:0 auto}
 
+/* type */
 h1,h2,h3{font-family:Cinzel, Georgia, serif; line-height:1.15; margin:.2rem 0 .6rem}
 h1{font-size:clamp(2rem,7vw,4.2rem)}
 h2{font-size:clamp(1.6rem,3.2vw,2.4rem); color:var(--gold); text-align:center; margin-bottom:1.2rem}
 h3{font-size:clamp(1.1rem,2vw,1.25rem)}
 p{color:var(--muted); margin:.4rem 0 1rem}
 .kicker{max-width:62ch; margin:0 auto 1.6rem; text-align:center}
+.chip{font-size:.65em; color:#1a1206; background:var(--gold); border-radius:999px; padding:.25em .6em; margin-left:.5rem}
 
-/* sections + gold separators */
-.section{position:relative; padding:clamp(2.8rem,6vw,5rem) 0; isolation:isolate}
+/* sections + separators */
+.section{
+  position:relative; padding:clamp(2.8rem,6vw,5rem) 0;
+  isolation:isolate; display:flow-root; /* prevents margin collapse */
+}
 .section::after{
   content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px;
   background:linear-gradient(90deg,transparent, rgba(217,181,111,.7), transparent);
   pointer-events:none;
 }
 
-/* textured bands */
+/* textured bands (Unsplash placeholders) */
 .band::before{
   content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
-  background-position:center; background-size:cover; background-repeat:no-repeat;
-  opacity:.96;
+  background-position:center; background-size:cover; background-repeat:no-repeat; opacity:.96;
 }
 .band.about::before{
-  background-image:linear-gradient(180deg,rgba(0,0,0,.26),rgba(0,0,0,.30)),
-  url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=2000&q=80');
+  background-image:
+    linear-gradient(180deg,rgba(0,0,0,.26),rgba(0,0,0,.30)),
+    url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=2000&q=80');
 }
 .band.redef::before{
-  background-image:linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.26)),
-  url('https://images.unsplash.com/photo-1502944550040-75345974929e?auto=format&fit=crop&w=2000&q=80');
+  background-image:
+    linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.26)),
+    url('https://images.unsplash.com/photo-1502944550040-75345974929e?auto=format&fit=crop&w=2000&q=80');
 }
 .band.systems::before{
-  background-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.24)),
-  url('https://images.unsplash.com/photo-1607705729272-6a6b7799e3e2?auto=format&fit=crop&w=2000&q=80');
+  background-image:
+    linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.24)),
+    url('https://images.unsplash.com/photo-1607705729272-6a6b7799e3e2?auto=format&fit=crop&w=2000&q=80');
 }
 .band.adopt::before{
-  background-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.24)),
-  url('https://images.unsplash.com/photo-1605727216805-0e36f1cf0c36?auto=format&fit=crop&w=2000&q=80');
+  background-image:
+    linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.30)),
+    url('https://images.unsplash.com/photo-1605727216805-0e36f1cf0c36?auto=format&fit=crop&w=2000&q=80');
 }
 .band.contact::before{
-  background-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.24)),
-  url('https://images.unsplash.com/photo-1601645199213-3dd98ec6c9dc?auto=format&fit=crop&w=2000&q=80');
+  background-image:
+    linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.28)),
+    url('https://images.unsplash.com/photo-1601645199213-3dd98ec6c9dc?auto=format&fit=crop&w=2000&q=80');
 }
 
-/* grids & cards */
+/* layout */
 .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(1rem,3vw,2rem)}
 @media (max-width:900px){.grid-3{grid-template-columns:1fr}}
 .grid-2{display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(1rem,3vw,2rem)}
@@ -95,14 +106,14 @@ p{color:var(--muted); margin:.4rem 0 1rem}
 .btn.gold{background:var(--gold); color:#1a1206; border-color:var(--gold)}
 .btn.ghost{background:transparent; color:var(--ink)}
 .hero-cta .btn{
-  background:rgba(0,0,0,.42); border:2px solid rgba(217,181,111,.85);
-  box-shadow:none; transform:translateZ(0);
+  background:rgba(0,0,0,.42); border:2px solid rgba(217,181,111,.85); box-shadow:none; transform:translateZ(0);
 }
 .hero-cta .btn:hover{ background:var(--gold); color:#1a1206; }
 
-/* hero with gold divider */
+/* hero (fixed peek & divider) */
 .hero{
-  position:relative; min-height:82vh; display:grid; place-items:center; padding:0; isolation:isolate;
+  position:relative; min-height:100svh; min-height:100vh; /* fallback */
+  display:grid; place-items:center; padding:0; isolation:isolate;
   background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
 }
 .hero::before{content:""; position:absolute; inset:0; z-index:0; background:linear-gradient(180deg,rgba(0,0,0,.36),rgba(0,0,0,.36))}
@@ -177,7 +188,7 @@ form.card button{margin-top:.4rem}
     </div>
   </section>
 
-  <!-- ABOUT -->
+  <!-- ABOUT (textured) -->
   <section id="about" class="section band about">
     <div class="container">
       <h2>About Us</h2>
@@ -185,7 +196,7 @@ form.card button{margin-top:.4rem}
     </div>
   </section>
 
-  <!-- REDEFINING LUXURY -->
+  <!-- REDEFINING LUXURY (textured) -->
   <section id="redefining" class="section band redef">
     <div class="container">
       <h2>Redefining Luxury</h2>
@@ -216,7 +227,7 @@ form.card button{margin-top:.4rem}
     </div>
   </section>
 
-  <!-- LIVING SYSTEMS -->
+  <!-- LIVING SYSTEMS (textured) -->
   <section id="systems" class="section band systems">
     <div class="container">
       <h2>Living Systems</h2>
@@ -249,15 +260,15 @@ form.card button{margin-top:.4rem}
   <!-- ACTIVITIES (plain, coming soon) -->
   <section id="activities" class="section">
     <div class="container">
-      <h2>Activities <span style="font-size:.6em;color:var(--muted);">(Coming soon)</span></h2>
+      <h2>Activities <span class="chip">Coming soon</span></h2>
       <p class="kicker">Immersion over consumption. Future experiences are being prepared.</p>
     </div>
   </section>
 
-  <!-- ADOPT A TREE -->
+  <!-- ADOPT A TREE (textured, coming soon) -->
   <section id="adopt" class="section band adopt">
     <div class="container">
-      <h2>Adopt a Tree <span style="font-size:.6em;color:var(--muted);">(Coming soon)</span></h2>
+      <h2>Adopt a Tree <span class="chip">Coming soon</span></h2>
       <p>Help reforest and protect habitats. Sponsor a tree and receive updates, GPS tagging, and seasonal notes.</p>
       <ul>
         <li><strong>Seed</strong> — sapling + update</li>
