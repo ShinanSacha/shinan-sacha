@@ -4,16 +4,17 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Shinan Sacha — Luxury as living systems</title>
-<meta name="description" content="A sanctuary in the making. Luxury as living systems—regenerative, coherent, alive." />
+<meta name="description" content="A sanctuary in the making. Luxury as living systems—regenerative, coherent, alive.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-:root{ --bg:#0b1510; --ink:#e8eee9; --muted:#cfe0d5; --gold:#d9b56f; --edge:rgba(217,181,111,.55) }
+:root{
+  --bg:#0b1510; --ink:#e8eee9; --muted:#cfe0d5; --gold:#d9b56f; --edge:rgba(217,181,111,.55);
+}
 
-/* base */
 *{box-sizing:border-box} html,body{margin:0;padding:0}
 body{
   color:var(--ink);
@@ -31,6 +32,7 @@ h3{font-size:clamp(1.1rem,2vw,1.25rem)}
 p{color:var(--muted); margin:.4rem 0 1rem}
 .kicker{max-width:62ch; margin:0 auto 1.6rem; text-align:center}
 
+/* sections + gold separators */
 .section{position:relative; padding:clamp(2.8rem,6vw,5rem) 0; isolation:isolate}
 .section::after{
   content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px;
@@ -38,45 +40,40 @@ p{color:var(--muted); margin:.4rem 0 1rem}
   pointer-events:none;
 }
 
-/* TEXTURED BANDS (all placeholders) */
+/* textured bands */
 .band::before{
   content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
   background-position:center; background-size:cover; background-repeat:no-repeat;
-  background-color:#11241b; opacity:.96;
+  opacity:.96;
 }
 .band.about::before{
-  background-image:
-    linear-gradient(180deg,rgba(0,0,0,.26),rgba(0,0,0,.30)),
-    url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=2000&q=80'); /* mahogany wall */
+  background-image:linear-gradient(180deg,rgba(0,0,0,.26),rgba(0,0,0,.30)),
+  url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=2000&q=80');
 }
 .band.redef::before{
-  background-image:
-    linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.26)),
-    url('https://images.unsplash.com/photo-1502944550040-75345974929e?auto=format&fit=crop&w=2000&q=80'); /* smoke/blue light */
+  background-image:linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.26)),
+  url('https://images.unsplash.com/photo-1502944550040-75345974929e?auto=format&fit=crop&w=2000&q=80');
 }
 .band.systems::before{
-  background-image:
-    linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.24)),
-    url('https://images.unsplash.com/photo-1607705729272-6a6b7799e3e2?auto=format&fit=crop&w=2000&q=80'); /* forest texture */
+  background-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.24)),
+  url('https://images.unsplash.com/photo-1607705729272-6a6b7799e3e2?auto=format&fit=crop&w=2000&q=80');
 }
 .band.adopt::before{
-  background-image:
-    linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.24)),
-    url('https://images.unsplash.com/photo-1605727216805-0e36f1cf0c36?auto=format&fit=crop&w=2000&q=80'); /* canopy */
+  background-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.24)),
+  url('https://images.unsplash.com/photo-1605727216805-0e36f1cf0c36?auto=format&fit=crop&w=2000&q=80');
 }
 .band.contact::before{
-  background-image:
-    linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.24)),
-    url('https://images.unsplash.com/photo-1601645199213-3dd98ec6c9dc?auto=format&fit=crop&w=2000&q=80'); /* clay/earth */
+  background-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.24)),
+  url('https://images.unsplash.com/photo-1601645199213-3dd98ec6c9dc?auto=format&fit=crop&w=2000&q=80');
 }
 
-/* grids/cards */
+/* grids & cards */
 .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(1rem,3vw,2rem)}
 @media (max-width:900px){.grid-3{grid-template-columns:1fr}}
 .grid-2{display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(1rem,3vw,2rem)}
 @media (max-width:900px){.grid-2{grid-template-columns:1fr}}
 
-.card{background:rgba(17,38,29,.60); border:1px solid rgba(217,181,111,.18); border-radius:16px; padding:1rem 1.1rem; box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.card{background:rgba(17,38,29,.6); border:1px solid rgba(217,181,111,.18); border-radius:16px; padding:1rem 1.1rem; box-shadow:0 10px 30px rgba(0,0,0,.18)}
 .imgcard{border-radius:14px; overflow:hidden; border:1px solid rgba(217,181,111,.15); background:#0f1e19}
 .imgcard img{width:100%; height:230px; object-fit:cover; display:block}
 
@@ -91,35 +88,46 @@ p{color:var(--muted); margin:.4rem 0 1rem}
 .site-nav a:hover{color:var(--ink); background:rgba(217,181,111,.08)}
 .menu{display:none; background:transparent; color:var(--ink); border:1px solid var(--edge); padding:.45rem .7rem; border-radius:10px}
 
-/* buttons & badges */
+/* buttons */
 .btn{display:inline-block; padding:.74rem 1.1rem; border-radius:12px; text-decoration:none; font-weight:700;
      border:1px solid var(--edge); transition:box-shadow .15s, background .15s, color .15s}
 .btn:hover{box-shadow:0 0 0 6px rgba(217,181,111,.18)}
 .btn.gold{background:var(--gold); color:#1a1206; border-color:var(--gold)}
 .btn.ghost{background:transparent; color:var(--ink)}
-.badge{display:inline-block; font:700 12px/1 Inter; letter-spacing:.1em; text-transform:uppercase;
-  padding:.4rem .6rem; border:1px solid var(--edge); border-radius:999px; margin-left:.6rem; color:var(--gold)}
-
-/* hero — now using a placeholder image too */
-.hero{
-  position:relative; min-height:88vh; display:grid; place-items:center; padding:0; margin-bottom:0; isolation:isolate;
-  background:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
-  background-color:#0e1a15;
+.hero-cta .btn{
+  background:rgba(0,0,0,.42); border:2px solid rgba(217,181,111,.85);
+  box-shadow:none; transform:translateZ(0);
 }
-.hero::before{content:""; position:absolute; inset:0; z-index:0; background:linear-gradient(180deg,rgba(0,0,0,.34),rgba(0,0,0,.36))}
-.hero::after{content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px;
-  background:linear-gradient(90deg,transparent, rgba(217,181,111,.7), transparent)}
-.hero .inner{position:relative; z-index:1; text-align:center; padding:10vh 2rem 12vh}
-.hero .eyebrow{color:var(--gold); letter-spacing:.25em; text-transform:uppercase; font-size:.9rem}
-.hero h1{margin:.45rem 0 .7rem}
+.hero-cta .btn:hover{ background:var(--gold); color:#1a1206; }
+
+/* hero with gold divider */
+.hero{
+  position:relative; min-height:82vh; display:grid; place-items:center; padding:0; isolation:isolate;
+  background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+}
+.hero::before{content:""; position:absolute; inset:0; z-index:0; background:linear-gradient(180deg,rgba(0,0,0,.36),rgba(0,0,0,.36))}
+.hero::after{
+  content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px;
+  background:linear-gradient(90deg,transparent, rgba(217,181,111,.7), transparent);
+}
+.hero .inner{position:relative; z-index:1; text-align:center; padding:8vh 2rem 10vh}
+.hero .eyebrow{color:var(--gold); letter-spacing:.25em; text-transform:uppercase; font-size:.85rem}
+.hero h1{margin:.4rem 0 .6rem}
 .hero p{letter-spacing:.35em; text-transform:uppercase; opacity:.95}
 .hero .actions{margin-top:1.2rem}
-.hero .btn{background:rgba(0,0,0,.42); border:2px solid rgba(217,181,111,.85)}
-.hero .btn:hover{ background:var(--gold); color:#1a1206; }
 
 /* icons */
 .icon{width:40px;height:40px; display:grid; place-items:center; border:1px solid rgba(217,181,111,.25); border-radius:11px; margin-bottom:.6rem}
 .icon svg{width:22px;height:22px;color:var(--gold)}
+.icon svg *{fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
+
+/* form */
+form.card input, form.card textarea{
+  width:100%; margin:.5rem 0 1rem; padding:.7rem .8rem; border-radius:10px;
+  border:1px solid rgba(217,181,111,.18); color:var(--ink);
+  background:rgba(12,30,23,.55);
+}
+form.card button{margin-top:.4rem}
 
 @media (max-width:760px){
   .menu{display:inline-flex; align-items:center; gap:.4rem}
@@ -148,6 +156,7 @@ p{color:var(--muted); margin:.4rem 0 1rem}
     <button class="menu" aria-expanded="false" aria-controls="mnav">Menu</button>
     <nav id="mnav" class="site-nav" aria-label="Main">
       <a href="#about">About</a>
+      <a href="#redefining">Redefining Luxury</a>
       <a href="#systems">Living Systems</a>
       <a href="#activities">Activities</a>
       <a href="#adopt">Adopt a Tree</a>
@@ -168,7 +177,7 @@ p{color:var(--muted); margin:.4rem 0 1rem}
     </div>
   </section>
 
-  <!-- ABOUT (TEXTURED) -->
+  <!-- ABOUT -->
   <section id="about" class="section band about">
     <div class="container">
       <h2>About Us</h2>
@@ -176,24 +185,30 @@ p{color:var(--muted); margin:.4rem 0 1rem}
     </div>
   </section>
 
-  <!-- REDEFINING LUXURY (TEXTURED, part of About) -->
-  <section class="section band redef" aria-label="Redefining Luxury">
+  <!-- REDEFINING LUXURY -->
+  <section id="redefining" class="section band redef">
     <div class="container">
       <h2>Redefining Luxury</h2>
       <div class="kicker">Old versus new—excess versus coherence.</div>
       <div class="grid-3">
         <article class="card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7h16M7 4v6"/></svg></div>
+          <div class="icon">
+            <svg viewBox="0 0 24 24"><path d="M4 7h16M7 4v6"/></svg>
+          </div>
           <h3>Old Model</h3>
           <p>Excess & display. Hidden extraction. Debt & waste.</p>
         </article>
         <article class="card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3v18M4 12h16"/></svg></div>
+          <div class="icon">
+            <svg viewBox="0 0 24 24"><path d="M12 3v18M4 12h16"/></svg>
+          </div>
           <h3>New Model</h3>
           <p>Coherence & restoration. Fair pay & culture. Living systems.</p>
         </article>
         <article class="card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 21c4-3 7-6 7-10a7 7 0 10-14 0c0 4 3 7 7 10z"/></svg></div>
+          <div class="icon">
+            <svg viewBox="0 0 24 24"><path d="M12 21c4-3 7-6 7-10a7 7 0 10-14 0c0 4 3 7 7 10z"/></svg>
+          </div>
           <h3>Guests as Stewards</h3>
           <p>Every stay restores the forest and strengthens the local web.</p>
         </article>
@@ -201,23 +216,29 @@ p{color:var(--muted); margin:.4rem 0 1rem}
     </div>
   </section>
 
-  <!-- LIVING SYSTEMS (TEXTURED) -->
+  <!-- LIVING SYSTEMS -->
   <section id="systems" class="section band systems">
     <div class="container">
       <h2>Living Systems</h2>
       <div class="grid-3">
         <article class="card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 8h16M6 16h12"/></svg></div>
+          <div class="icon">
+            <svg viewBox="0 0 24 24"><path d="M4 8h16M6 16h12"/></svg>
+          </div>
           <h3>Nature × Tech</h3>
           <p>Solar, water, and soil systems tuned to the forest. Quiet tech that protects life.</p>
         </article>
         <article class="card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 21c4-3 7-6 7-10a7 7 0 10-14 0c0 4 3 7 7 10z"/></svg></div>
+          <div class="icon">
+            <svg viewBox="0 0 24 24"><path d="M12 21c4-3 7-6 7-10a7 7 0 10-14 0c0 4 3 7 7 10z"/></svg>
+          </div>
           <h3>Community First</h3>
           <p>Fair wages, artisan partnership, cultural integrity. Wealth that circulates locally.</p>
         </article>
         <article class="card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h6v6H4zM14 14h6v6h-6z"/></svg></div>
+          <div class="icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 14h6v6h-6z"/></svg>
+          </div>
           <h3>Regeneration</h3>
           <p>Reforestation, conservation, and design that gives more than it takes.</p>
         </article>
@@ -225,63 +246,43 @@ p{color:var(--muted); margin:.4rem 0 1rem}
     </div>
   </section>
 
-  <!-- ACTIVITIES (PLAIN) -->
+  <!-- ACTIVITIES (plain, coming soon) -->
   <section id="activities" class="section">
     <div class="container">
-      <h2>Activities <span class="badge">Coming soon</span></h2>
-      <p class="kicker">Immersion over consumption. Try these first experiences while the project grows:</p>
-      <div class="grid-3">
-        <article class="imgcard">
-          <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80" alt="Botanical walk">
-          <div class="card"><h3>Botanical Walk</h3><p>Native species & medicinal plants.</p></div>
-        </article>
-        <article class="imgcard">
-          <img src="https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?auto=format&fit=crop&w=1200&q=80" alt="Butterfly house">
-          <div class="card"><h3>Mariposario</h3><p>Observe metamorphosis in a protected habitat.</p></div>
-        </article>
-        <article class="imgcard">
-          <img src="https://images.unsplash.com/photo-1491555103944-7c647fd857e6?auto=format&fit=crop&w=1200&q=80" alt="Pier evenings">
-          <div class="card"><h3>Pier Evenings</h3><p>Solar-lit romance over the river.</p></div>
-        </article>
-      </div>
+      <h2>Activities <span style="font-size:.6em;color:var(--muted);">(Coming soon)</span></h2>
+      <p class="kicker">Immersion over consumption. Future experiences are being prepared.</p>
     </div>
   </section>
 
-  <!-- ADOPT A TREE (TEXTURED) -->
+  <!-- ADOPT A TREE -->
   <section id="adopt" class="section band adopt">
-    <div class="container grid-2">
-      <div>
-        <h2>Adopt a Tree <span class="badge">Coming soon</span></h2>
-        <p>Help reforest and protect habitats. Sponsor a tree and receive updates, GPS tagging, and seasonal notes.</p>
-        <ul>
-          <li><strong>Seed</strong> — sapling + update</li>
-          <li><strong>Grove</strong> — 5 trees + quarterly notes</li>
-          <li><strong>Canopy</strong> — 20 trees + on-site naming</li>
-        </ul>
-        <a class="btn gold" href="#contact">Plant the Future</a>
-      </div>
-      <div class="card">
-        <h3>Why it matters</h3>
-        <p>Restoring canopy accelerates biodiversity, stabilizes soils, and cools microclimates—benefits guests can feel.</p>
-      </div>
+    <div class="container">
+      <h2>Adopt a Tree <span style="font-size:.6em;color:var(--muted);">(Coming soon)</span></h2>
+      <p>Help reforest and protect habitats. Sponsor a tree and receive updates, GPS tagging, and seasonal notes.</p>
+      <ul>
+        <li><strong>Seed</strong> — sapling + update</li>
+        <li><strong>Grove</strong> — 5 trees + quarterly notes</li>
+        <li><strong>Canopy</strong> — 20 trees + on-site naming</li>
+      </ul>
+      <a class="btn gold" href="#contact">Plant the Future</a>
     </div>
   </section>
 
-  <!-- PARTNERS (PLAIN) -->
+  <!-- PARTNERS (plain) -->
   <section id="partners" class="section">
     <div class="container">
       <h2>Partners</h2>
       <p class="kicker">Trusted local allies who make the experience seamless.</p>
       <div class="grid-2">
         <article class="imgcard">
-          <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80" alt="Hotel Mercedes">
+          <img src="https://images.unsplash.com/photo-1501117716987-c8e3f6a0f6af?auto=format&fit=crop&w=900&q=80" alt="Hotel Mercedes">
           <div class="card">
             <h3>Hotel Mercedes</h3>
             <p>The oldest hotel in town—your comfortable base before the journey to the retreat.</p>
           </div>
         </article>
         <article class="imgcard">
-          <img src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?auto=format&fit=crop&w=1200&q=80" alt="La Cabaña Lodge">
+          <img src="https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?auto=format&fit=crop&w=900&q=80" alt="La Cabaña Lodge">
           <div class="card">
             <h3>La Cabaña Lodge</h3>
             <p>Gateway to the island and jungle, operated by trusted local hosts.</p>
@@ -291,7 +292,7 @@ p{color:var(--muted); margin:.4rem 0 1rem}
     </div>
   </section>
 
-  <!-- CONTACT (TEXTURED) -->
+  <!-- CONTACT (textured) -->
   <section id="contact" class="section band contact">
     <div class="container grid-2">
       <div>
@@ -301,9 +302,9 @@ p{color:var(--muted); margin:.4rem 0 1rem}
       </div>
       <form name="contact" method="POST" data-netlify="true" class="card">
         <input type="hidden" name="form-name" value="contact">
-        <label> Your name <br><input required type="text" name="name"></label>
-        <label> Your email <br><input required type="email" name="email"></label>
-        <label> Your message <br><textarea required name="message" rows="5"></textarea></label>
+        <label>Your name<br><input required type="text" name="name"></label>
+        <label>Your email<br><input required type="email" name="email"></label>
+        <label>Your message<br><textarea required name="message" rows="5"></textarea></label>
         <button class="btn gold" type="submit">Send</button>
       </form>
     </div>
@@ -313,7 +314,15 @@ p{color:var(--muted); margin:.4rem 0 1rem}
 <footer class="footer">
   <div class="container row">
     <div>Shinan Sacha</div>
-    <nav><a href="#about">About</a><a href="#systems">Systems</a><a href="#activities">Activities</a><a href="#adopt">Adopt a Tree</a><a href="#partners">Partners</a><a href="#contact">Contact</a></nav>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#redefining">Redefining Luxury</a>
+      <a href="#systems">Systems</a>
+      <a href="#activities">Activities</a>
+      <a href="#adopt">Adopt a Tree</a>
+      <a href="#partners">Partners</a>
+      <a href="#contact">Contact</a>
+    </nav>
     <small>© <span id="y"></span> Shinan Sacha — Luxury without extraction.</small>
   </div>
 </footer>
