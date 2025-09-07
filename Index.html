@@ -13,16 +13,9 @@
 <style>
 :root{
   --bg:#0b1510; --ink:#e8eee9; --muted:#cfe0d5; --gold:#d9b56f; --edge:rgba(217,181,111,.55);
-
-  /* PLACEHOLDER TEXTURES */
-  --tx-hero:   url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80');
-  --tx-wood:   url('https://images.unsplash.com/photo-1603052875433-26d65e88168e?auto=format&fit=crop&w=1600&q=80');
-  --tx-smoke:  url('https://images.unsplash.com/photo-1520453803296-c39eabe2dab4?auto=format&fit=crop&w=1600&q=80');
-  --tx-leather:url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1600&q=80');
-  --tx-canopy: url('https://images.unsplash.com/photo-1607777646566-6a8a2a5d0a74?auto=format&fit=crop&w=1600&q=80');
-  --tx-clay:   url('https://images.unsplash.com/photo-1620641788421-7b5e3eec95bf?auto=format&fit=crop&w=1600&q=80');
 }
 
+/* base */
 *{box-sizing:border-box} html,body{margin:0;padding:0}
 body{
   color:var(--ink);
@@ -41,34 +34,30 @@ p{color:var(--muted); margin:.4rem 0 1rem}
 .kicker{max-width:62ch; margin:0 auto 1.6rem; text-align:center}
 
 .section{position:relative; padding:clamp(2.8rem,6vw,5rem) 0; isolation:isolate}
-.section::after{
+.section::after{ /* thin golden divider */
   content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px;
   background:linear-gradient(90deg,transparent, rgba(217,181,111,.7), transparent);
   pointer-events:none;
 }
 
-/* TEXTURED BANDS */
-.band.wood::before,
-.band.smoke::before,
-.band.leather::before,
-.band.canopy::before,
-.band.clay::before{
-  content:""; position:absolute; inset:0; z-index:-1; opacity:.96;
+/* TEXTURED BANDS (about, redefining, systems, adopt, contact) */
+.band::before{
+  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none; opacity:.92;
   background-position:center; background-size:cover; background-repeat:no-repeat;
 }
-.band.wood::before{   background-image:linear-gradient(180deg,rgba(0,0,0,.26),rgba(0,0,0,.30)), var(--tx-wood); }
-.band.smoke::before{  background-image:linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.26)), var(--tx-smoke); }
-.band.leather::before{background-image:linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.26)), var(--tx-leather); }
-.band.canopy::before{ background-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.24)), var(--tx-canopy); }
-.band.clay::before{   background-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.24)), var(--tx-clay); }
+.band.about::before   { background-image:url('https://source.unsplash.com/1600x900/?mahogany,wood'); }
+.band.redef::before   { background-image:url('https://source.unsplash.com/1600x900/?smoke,dark'); }
+.band.systems::before { background-image:url('https://source.unsplash.com/1600x900/?forest,texture'); }
+.band.adopt::before   { background-image:url('https://source.unsplash.com/1600x900/?jungle,canopy'); }
+.band.contact::before { background-image:url('https://source.unsplash.com/1600x900/?clay,earth'); }
 
-/* layout helpers */
+/* layout */
 .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(1rem,3vw,2rem)}
 @media (max-width:900px){.grid-3{grid-template-columns:1fr}}
 .grid-2{display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(1rem,3vw,2rem)}
 @media (max-width:900px){.grid-2{grid-template-columns:1fr}}
 
-.card{background:rgba(17,38,29,.6); border:1px solid rgba(217,181,111,.18); border-radius:16px; padding:1rem 1.1rem; box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.card{background:rgba(17,38,29,.60); border:1px solid rgba(217,181,111,.18); border-radius:16px; padding:1rem 1.1rem; box-shadow:0 10px 30px rgba(0,0,0,.18)}
 .imgcard{border-radius:14px; overflow:hidden; border:1px solid rgba(217,181,111,.15); background:#0f1e19}
 .imgcard img{width:100%; height:230px; object-fit:cover; display:block}
 
@@ -83,39 +72,32 @@ p{color:var(--muted); margin:.4rem 0 1rem}
 .site-nav a:hover{color:var(--ink); background:rgba(217,181,111,.08)}
 .menu{display:none; background:transparent; color:var(--ink); border:1px solid var(--edge); padding:.45rem .7rem; border-radius:10px}
 
-/* buttons */
+/* buttons & badges */
 .btn{display:inline-block; padding:.74rem 1.1rem; border-radius:12px; text-decoration:none; font-weight:700;
      border:1px solid var(--edge); transition:box-shadow .15s, background .15s, color .15s}
 .btn:hover{box-shadow:0 0 0 6px rgba(217,181,111,.18)}
 .btn.gold{background:var(--gold); color:#1a1206; border-color:var(--gold)}
-.btn.ghost{background:transparent; color:#1a1206; border-color:var(--gold)}
-.hero-cta .btn{
-  background:rgba(0,0,0,.42); border:2px solid rgba(217,181,111,.85);
+.btn.ghost{background:transparent; color:var(--ink)}
+.badge{
+  display:inline-block; font:700 12px/1 Inter, system-ui; letter-spacing:.1em; text-transform:uppercase;
+  padding:.4rem .6rem; border:1px solid var(--edge); border-radius:999px; margin-left:.6rem; color:var(--gold)
 }
-.hero-cta .btn:hover{ background:var(--gold); color:#1a1206; }
 
-/* HERO */
+/* hero */
 .hero{
-  position:relative; min-height:100svh; display:grid; place-items:center; padding:0;
-  background:var(--tx-hero) center/cover no-repeat;
+  position:relative; min-height:88vh; display:grid; place-items:center; padding:0; margin-bottom:0; isolation:isolate;
+  background: url('images/hero.jpg') center/cover no-repeat;
 }
-.hero::before{content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.36),rgba(0,0,0,.36))}
-.hero .inner{position:relative; text-align:center; padding:10vh 2rem 12vh}
-.hero .eyebrow{color:var(--gold); letter-spacing:.25em; text-transform:uppercase; font-size:.85rem}
-.hero h1{margin:.4rem 0 .6rem}
+.hero::before{content:""; position:absolute; inset:0; z-index:0; background:linear-gradient(180deg,rgba(0,0,0,.34),rgba(0,0,0,.36))}
+.hero::after{content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px;
+  background:linear-gradient(90deg,transparent, rgba(217,181,111,.7), transparent)}
+.hero .inner{position:relative; z-index:1; text-align:center; padding:10vh 2rem 12vh}
+.hero .eyebrow{color:var(--gold); letter-spacing:.25em; text-transform:uppercase; font-size:.9rem}
+.hero h1{margin:.45rem 0 .7rem}
 .hero p{letter-spacing:.35em; text-transform:uppercase; opacity:.95}
 .hero .actions{margin-top:1.2rem}
-.hero::after{
-  content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px;
-  background:linear-gradient(90deg,transparent, rgba(217,181,111,.7), transparent);
-}
-
-/* BADGE */
-.badge{
-  display:inline-block; font-size:.75rem; letter-spacing:.12em; text-transform:uppercase;
-  padding:.35rem .55rem; border:1px solid rgba(217,181,111,.7); color:var(--gold);
-  border-radius:999px; background:rgba(0,0,0,.3)
-}
+.hero .btn{background:rgba(0,0,0,.42); border:2px solid rgba(217,181,111,.85)}
+.hero .btn:hover{ background:var(--gold); color:#1a1206; }
 
 /* icons */
 .icon{width:40px;height:40px; display:grid; place-items:center; border:1px solid rgba(217,181,111,.25); border-radius:11px; margin-bottom:.6rem}
@@ -124,9 +106,10 @@ p{color:var(--muted); margin:.4rem 0 1rem}
 @media (max-width:760px){
   .menu{display:inline-flex; align-items:center; gap:.4rem}
   .site-nav{
-    display:none; position:absolute; right:1rem; top:56px;
+    display:none; position:absolute; right:1rem; top:56px; z-index:70;
     background:#0f2219; border:1px solid rgba(217,181,111,.18);
     border-radius:14px; padding:.35rem; width:min(85vw,320px);
+    box-shadow:0 18px 40px rgba(0,0,0,.35)
   }
   .site-nav.open{display:block}
   .site-nav a{display:block; padding:.6rem .8rem}
@@ -167,62 +150,101 @@ p{color:var(--muted); margin:.4rem 0 1rem}
     </div>
   </section>
 
-  <!-- ABOUT = WOOD -->
-  <section id="about" class="section band wood">
+  <!-- ABOUT (TEXTURED) -->
+  <section id="about" class="section band about">
     <div class="container">
       <h2>About Us</h2>
       <p class="kicker"><strong>Shinan Sacha</strong> means “forest of knowledge.” A sanctuary in the making where luxury is measured by coherence—nature, technology, and culture aligned to give more than they take.</p>
-      <div class="imgcard">
-        <img src="https://via.placeholder.com/1000x500/4b382a/ffffff?text=About+Image" alt="About placeholder">
-      </div>
     </div>
   </section>
 
-  <!-- REDEFINING LUXURY = SMOKE -->
-  <section id="redefining" class="section band smoke">
+  <!-- REDEFINING LUXURY (TEXTURED, NO NAV LINK) -->
+  <section class="section band redef" aria-label="Redefining Luxury">
     <div class="container">
       <h2>Redefining Luxury</h2>
       <div class="kicker">Old versus new—excess versus coherence.</div>
       <div class="grid-3">
-        <article class="card"><h3>Old Model</h3><p>Excess & display. Hidden extraction. Debt & waste.</p></article>
-        <article class="card"><h3>New Model</h3><p>Coherence & restoration. Fair pay & culture. Living systems.</p></article>
-        <article class="card"><h3>Guests as Stewards</h3><p>Every stay restores the forest and strengthens the local web.</p></article>
+        <article class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7h16M7 4v6"/></svg></div>
+          <h3>Old Model</h3>
+          <p>Excess & display. Hidden extraction. Debt & waste.</p>
+        </article>
+        <article class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3v18M4 12h16"/></svg></div>
+          <h3>New Model</h3>
+          <p>Coherence & restoration. Fair pay & culture. Living systems.</p>
+        </article>
+        <article class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 21c4-3 7-6 7-10a7 7 0 10-14 0c0 4 3 7 7 10z"/></svg></div>
+          <h3>Guests as Stewards</h3>
+          <p>Every stay restores the forest and strengthens the local web.</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- LIVING SYSTEMS = LEATHER -->
-  <section id="systems" class="section band leather">
+  <!-- LIVING SYSTEMS (TEXTURED) -->
+  <section id="systems" class="section band systems">
     <div class="container">
       <h2>Living Systems</h2>
       <div class="grid-3">
-        <article class="card"><h3>Nature × Tech</h3><p>Solar, water, and soil systems tuned to the forest. Quiet tech that protects life.</p></article>
-        <article class="card"><h3>Community First</h3><p>Fair wages, artisan partnership, cultural integrity. Wealth that circulates locally.</p></article>
-        <article class="card"><h3>Regeneration</h3><p>Reforestation, conservation, and design that gives more than it takes.</p></article>
+        <article class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 8h16M6 16h12"/></svg></div>
+          <h3>Nature × Tech</h3>
+          <p>Solar, water, and soil systems tuned to the forest. Quiet tech that protects life.</p>
+        </article>
+        <article class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 21c4-3 7-6 7-10a7 7 0 10-14 0c0 4 3 7 7 10z"/></svg></div>
+          <h3>Community First</h3>
+          <p>Fair wages, artisan partnership, cultural integrity. Wealth that circulates locally.</p>
+        </article>
+        <article class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h6v6H4zM14 14h6v6h-6z"/></svg></div>
+          <h3>Regeneration</h3>
+          <p>Reforestation, conservation, and design that gives more than it takes.</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ACTIVITIES (PLAIN) + Coming Soon -->
+  <!-- ACTIVITIES (PLAIN) -->
   <section id="activities" class="section">
     <div class="container">
       <h2>Activities <span class="badge">Coming soon</span></h2>
-      <p class="kicker">Immersion over consumption. First experiences will open as the project grows.</p>
+      <p class="kicker">Immersion over consumption. Try these first experiences while the project grows:</p>
       <div class="grid-3">
-        <article class="imgcard"><img src="https://via.placeholder.com/600x400/335533/ffffff?text=Activity+1" alt="Botanical walk"><div class="card"><h3>Botanical Walk</h3><p>Native species & medicinal plants.</p></div></article>
-        <article class="imgcard"><img src="https://via.placeholder.com/600x400/553333/ffffff?text=Activity+2" alt="Butterfly house"><div class="card"><h3>Mariposario</h3><p>Observe metamorphosis in a protected habitat.</p></div></article>
-        <article class="imgcard"><img src="https://via.placeholder.com/600x400/333355/ffffff?text=Activity+3" alt="Pier evenings"><div class="card"><h3>Pier Evenings</h3><p>Solar-lit romance over the river.</p></div></article>
+        <article class="imgcard">
+          <img src="https://source.unsplash.com/800x600/?rainforest,trail" alt="Botanical walk">
+          <div class="card"><h3>Botanical Walk</h3><p>Native species & medicinal plants.</p></div>
+        </article>
+        <article class="imgcard">
+          <img src="https://source.unsplash.com/800x600/?butterfly,conservatory" alt="Butterfly house">
+          <div class="card"><h3>Mariposario</h3><p>Observe metamorphosis in a protected habitat.</p></div>
+        </article>
+        <article class="imgcard">
+          <img src="https://source.unsplash.com/800x600/?pier,evening" alt="Pier evenings">
+          <div class="card"><h3>Pier Evenings</h3><p>Solar-lit romance over the river.</p></div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ADOPT A TREE = CANOPY + Coming Soon -->
-  <section id="adopt" class="section band canopy">
-    <div class="container">
-      <h2>Adopt a Tree <span class="badge">Coming soon</span></h2>
-      <p class="kicker">Help reforest and protect habitats. Sponsor a tree and receive updates, GPS tagging, and seasonal notes.</p>
-      <div class="imgcard">
-        <img src="https://via.placeholder.com/1000x500/335533/ffffff?text=Adopt+a+Tree+Image" alt="Adopt a tree placeholder">
+  <!-- ADOPT A TREE (TEXTURED) -->
+  <section id="adopt" class="section band adopt">
+    <div class="container grid-2">
+      <div>
+        <h2>Adopt a Tree <span class="badge">Coming soon</span></h2>
+        <p>Help reforest and protect habitats. Sponsor a tree and receive updates, GPS tagging, and seasonal notes.</p>
+        <ul>
+          <li><strong>Seed</strong> — sapling + update</li>
+          <li><strong>Grove</strong> — 5 trees + quarterly notes</li>
+          <li><strong>Canopy</strong> — 20 trees + on-site naming</li>
+        </ul>
+        <a class="btn gold" href="#contact">Plant the Future</a>
+      </div>
+      <div class="card">
+        <h3>Why it matters</h3>
+        <p>Restoring canopy accelerates biodiversity, stabilizes soils, and cools microclimates—benefits guests can feel.</p>
       </div>
     </div>
   </section>
@@ -233,29 +255,39 @@ p{color:var(--muted); margin:.4rem 0 1rem}
       <h2>Partners</h2>
       <p class="kicker">Trusted local allies who make the experience seamless.</p>
       <div class="grid-2">
-        <article class="imgcard"><img src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1000&q=80" alt="Hotel Mercedes"><div class="card"><h3>Hotel Mercedes</h3></div></article>
-        <article class="imgcard"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1000&q=80" alt="La Cabaña Lodge"><div class="card"><h3>La Cabaña Lodge</h3></div></article>
+        <article class="imgcard">
+          <img src="https://source.unsplash.com/800x600/?hotel,lobby" alt="Hotel Mercedes">
+          <div class="card">
+            <h3>Hotel Mercedes</h3>
+            <p>The oldest hotel in town—your comfortable base before the journey to the retreat.</p>
+          </div>
+        </article>
+        <article class="imgcard">
+          <img src="https://source.unsplash.com/800x600/?jungle,lodge" alt="La Cabaña Lodge">
+          <div class="card">
+            <h3>La Cabaña Lodge</h3>
+            <p>Gateway to the island and jungle, operated by trusted local hosts.</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT = CLAY -->
-  <section id="contact" class="section band clay">
+  <!-- CONTACT (TEXTURED) -->
+  <section id="contact" class="section band contact">
     <div class="container grid-2">
       <div>
         <h2>Contact / Bookings</h2>
         <p>Email: <a href="mailto:contact@yourdomain.com">contact@yourdomain.com</a><br>WhatsApp: +XX XXXXXXXX</p>
-        <div class="imgcard">
-          <img src="https://via.placeholder.com/1000x500/663a2a/ffffff?text=Contact+Image" alt="Contact placeholder">
-        </div>
+        <p>Every message moves the project forward.</p>
       </div>
       <form name="contact" method="POST" data-netlify="true" class="card">
         <input type="hidden" name="form-name" value="contact">
-        <label>Your name<br><input required type="text" name="name"></label>
-       <label>Your email<br><input required type="email" name="email"></label>
-<label>Your message<br><textarea required name="message" rows="5"></textarea></label>
-<button class="btn gold" type="submit">Send</button>
-</form>
+        <label> Your name <br><input required type="text" name="name"></label>
+        <label> Your email <br><input required type="email" name="email"></label>
+        <label> Your message <br><textarea required name="message" rows="5"></textarea></label>
+        <button class="btn gold" type="submit">Send</button>
+      </form>
     </div>
   </section>
 </main>
@@ -263,26 +295,15 @@ p{color:var(--muted); margin:.4rem 0 1rem}
 <footer class="footer">
   <div class="container row">
     <div>Shinan Sacha</div>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#systems">Living Systems</a>
-      <a href="#activities">Activities</a>
-      <a href="#adopt">Adopt a Tree</a>
-      <a href="#partners">Partners</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <nav><a href="#about">About</a><a href="#systems">Systems</a><a href="#activities">Activities</a><a href="#adopt">Adopt a Tree</a><a href="#partners">Partners</a><a href="#contact">Contact</a></nav>
     <small>© <span id="y"></span> Shinan Sacha — Luxury without extraction.</small>
   </div>
 </footer>
 
 <script>
-  document.getElementById('y').textContent = new Date().getFullYear();
-  const menuBtn = document.querySelector('.menu');
-  const nav = document.getElementById('mnav');
-  menuBtn.addEventListener('click', () => {
-    const open = nav.classList.toggle('open');
-    menuBtn.setAttribute('aria-expanded', open);
-  });
+document.getElementById('y').textContent=new Date().getFullYear();
+const menuBtn=document.querySelector('.menu'); const nav=document.getElementById('mnav');
+menuBtn.addEventListener('click',()=>{const o=nav.classList.toggle('open'); menuBtn.setAttribute('aria-expanded',o);});
 </script>
 </body>
 </html>
