@@ -25,7 +25,7 @@ body{
   -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
   overflow-x:hidden;
 }
-.container{width:min(1120px,92vw); margin:0 auto}
+.container{width:min(1120px,92vw); margin:0 auto; position:relative; z-index:1;} /* ensures content sits above bg images */
 
 /* type */
 h1,h2,h3{font-family:Cinzel, Georgia, serif; line-height:1.15; margin:.2rem 0 .6rem}
@@ -42,14 +42,14 @@ p{color:var(--muted); margin:.4rem 0 1rem}
   isolation:isolate; display:flow-root; /* prevents margin collapse */
 }
 .section::after{
-  content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px;
-  background:linear-gradient(90deg,transparent, rgba(217,181,111,.7), transparent);
+  content:""; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background:linear-gradient(90deg,transparent, rgba(217,181,111,.85) 20%, rgba(217,181,111,.85) 80%, transparent);
   pointer-events:none;
 }
 
 /* textured bands (Unsplash placeholders) */
 .band::before{
-  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
   background-position:center; background-size:cover; background-repeat:no-repeat; opacity:.96;
 }
 .band.about::before{
@@ -118,8 +118,8 @@ p{color:var(--muted); margin:.4rem 0 1rem}
 }
 .hero::before{content:""; position:absolute; inset:0; z-index:0; background:linear-gradient(180deg,rgba(0,0,0,.36),rgba(0,0,0,.36))}
 .hero::after{
-  content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px;
-  background:linear-gradient(90deg,transparent, rgba(217,181,111,.7), transparent);
+  content:""; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+  background:linear-gradient(90deg,transparent, rgba(217,181,111,.9) 20%, rgba(217,181,111,.9) 80%, transparent);
 }
 .hero .inner{position:relative; z-index:1; text-align:center; padding:8vh 2rem 10vh}
 .hero .eyebrow{color:var(--gold); letter-spacing:.25em; text-transform:uppercase; font-size:.85rem}
@@ -196,7 +196,7 @@ form.card button{margin-top:.4rem}
     </div>
   </section>
 
-  <!-- REDEFINING LUXURY (textured) -->
+  <!-- REDEFINING LUXURY (textured; follows About) -->
   <section id="redefining" class="section band redef">
     <div class="container">
       <h2>Redefining Luxury</h2>
@@ -257,18 +257,48 @@ form.card button{margin-top:.4rem}
     </div>
   </section>
 
-  <!-- ACTIVITIES (plain, coming soon) -->
+  <!-- ACTIVITIES (image+card, 4 items like Partners) -->
   <section id="activities" class="section">
     <div class="container">
-      <h2>Activities <span class="chip">Coming soon</span></h2>
-      <p class="kicker">Immersion over consumption. Future experiences are being prepared.</p>
+      <h2>Activities</h2>
+      <p class="kicker">Immersion over consumption. Quiet experiences that deepen your connection.</p>
+      <div class="grid-2">
+        <article class="imgcard">
+          <img src="https://images.unsplash.com/photo-1487700160041-babef9c3cb55?auto=format&fit=crop&w=900&q=80" alt="Botanical Garden">
+          <div class="card">
+            <h3>Botanical Garden</h3>
+            <p>A curated path through native species, ethnobotany notes, and seed nurseries.</p>
+          </div>
+        </article>
+        <article class="imgcard">
+          <img src="https://images.unsplash.com/photo-1527422477831-6f444c76f44e?auto=format&fit=crop&w=900&q=80" alt="Mariposario (Butterfly House)">
+          <div class="card">
+            <h3>Mariposario</h3>
+            <p>Butterflies, host plants, and life-cycle stations—habitat restoration in motion.</p>
+          </div>
+        </article>
+        <article class="imgcard">
+          <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=900&q=80" alt="Medicine Hut">
+          <div class="card">
+            <h3>Medicine Hut</h3>
+            <p>Guided tastings of traditional herbal mixes and forest teas (non-psychoactive).</p>
+          </div>
+        </article>
+        <article class="imgcard">
+          <img src="https://images.unsplash.com/photo-1508186225823-0963cf9ab0de?auto=format&fit=crop&w=900&q=80" alt="River & Trails">
+          <div class="card">
+            <h3>River & Trails</h3>
+            <p>Boardwalks and lake paths for birdwatching, sunset drifts, and quiet observation.</p>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
-  <!-- ADOPT A TREE (textured, coming soon) -->
+  <!-- ADOPT A TREE (textured) -->
   <section id="adopt" class="section band adopt">
     <div class="container">
-      <h2>Adopt a Tree <span class="chip">Coming soon</span></h2>
+      <h2>Adopt a Tree</h2>
       <p>Help reforest and protect habitats. Sponsor a tree and receive updates, GPS tagging, and seasonal notes.</p>
       <ul>
         <li><strong>Seed</strong> — sapling + update</li>
