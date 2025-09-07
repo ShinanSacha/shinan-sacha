@@ -14,7 +14,8 @@
 :root{
   --bg:#0b1510; --ink:#e8eee9; --muted:#cfe0d5; --gold:#d9b56f; --edge:rgba(217,181,111,.55);
 
-  /* PLACEHOLDERS (replace later with your own) */
+  /* PLACEHOLDER TEXTURES (swap later for your own images) */
+  --tx-hero:   url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80');
   --tx-wood:   url('https://images.unsplash.com/photo-1603052875433-26d65e88168e?auto=format&fit=crop&w=1600&q=80');
   --tx-smoke:  url('https://images.unsplash.com/photo-1520453803296-c39eabe2dab4?auto=format&fit=crop&w=1600&q=80');
   --tx-leather:url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1600&q=80');
@@ -40,7 +41,6 @@ p{color:var(--muted); margin:.4rem 0 1rem}
 .kicker{max-width:62ch; margin:0 auto 1.6rem; text-align:center}
 
 .section{position:relative; padding:clamp(2.8rem,6vw,5rem) 0; isolation:isolate}
-/* thin golden divider under every section */
 .section::after{
   content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px;
   background:linear-gradient(90deg,transparent, rgba(217,181,111,.7), transparent);
@@ -97,7 +97,7 @@ p{color:var(--muted); margin:.4rem 0 1rem}
 /* HERO */
 .hero{
   position:relative; min-height:100svh; display:grid; place-items:center; padding:0;
-  background:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+  background:var(--tx-hero) center/cover no-repeat;
 }
 .hero::before{content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.36),rgba(0,0,0,.36))}
 .hero .inner{position:relative; text-align:center; padding:10vh 2rem 12vh}
@@ -108,6 +108,13 @@ p{color:var(--muted); margin:.4rem 0 1rem}
 .hero::after{
   content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px;
   background:linear-gradient(90deg,transparent, rgba(217,181,111,.7), transparent);
+}
+
+/* BADGE */
+.badge{
+  display:inline-block; font-size:.75rem; letter-spacing:.12em; text-transform:uppercase;
+  padding:.35rem .55rem; border:1px solid rgba(217,181,111,.7); color:var(--gold);
+  border-radius:999px; background:rgba(0,0,0,.3)
 }
 
 /* icons */
@@ -140,11 +147,11 @@ p{color:var(--muted); margin:.4rem 0 1rem}
     <button class="menu" aria-expanded="false" aria-controls="mnav">Menu</button>
     <nav id="mnav" class="site-nav" aria-label="Main">
       <a href="#about">About</a>
-      <a href="#redefining">Redefining Luxury</a>
+      <!-- Removed 'Redefining Luxury' from nav on purpose -->
       <a href="#systems">Living Systems</a>
       <a href="#activities">Activities</a>
+      <a href="#adopt">Adopt a Tree</a>
       <a href="#partners">Partners</a>
-      <a href="#adopt">Programs</a>
       <a href="#contact" class="btn ghost">Contact</a>
     </nav>
   </div>
@@ -169,7 +176,7 @@ p{color:var(--muted); margin:.4rem 0 1rem}
     </div>
   </section>
 
-  <!-- REDEFINING LUXURY = SMOKE -->
+  <!-- REDEFINING LUXURY = SMOKE (kept as its own section for distinct background, but not in nav) -->
   <section id="redefining" class="section band smoke">
     <div class="container">
       <h2>Redefining Luxury</h2>
@@ -194,40 +201,29 @@ p{color:var(--muted); margin:.4rem 0 1rem}
     </div>
   </section>
 
-  <!-- ACTIVITIES = PLAIN -->
+  <!-- ACTIVITIES (PLAIN) + Coming Soon -->
   <section id="activities" class="section">
     <div class="container">
-      <h2>Activities</h2>
-      <p class="kicker">Immersion over consumption. Try these first experiences while the project grows:</p>
+      <h2>Activities <span class="badge">Coming soon</span></h2>
+      <p class="kicker">Immersion over consumption. First experiences will open as the project grows.</p>
       <div class="grid-3">
-        <article class="imgcard"><img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad1?auto=format&fit=crop&w=1000&q=80" alt="Botanical walk"><div class="card"><h3>Botanical Walk</h3></div></article>
-        <article class="imgcard"><img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1000&q=80" alt="Butterfly house"><div class="card"><h3>Mariposario</h3></div></article>
-        <article class="imgcard"><img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1000&q=80" alt="Pier evenings"><div class="card"><h3>Pier Evenings</h3></div></article>
+        <article class="imgcard"><img src="https://via.placeholder.com/600x400/335533/ffffff?text=Activity+1" alt="Botanical walk"><div class="card"><h3>Botanical Walk</h3><p>Native species & medicinal plants.</p></div></article>
+        <article class="imgcard"><img src="https://via.placeholder.com/600x400/553333/ffffff?text=Activity+2" alt="Butterfly house"><div class="card"><h3>Mariposario</h3><p>Observe metamorphosis in a protected habitat.</p></div></article>
+        <article class="imgcard"><img src="https://via.placeholder.com/600x400/333355/ffffff?text=Activity+3" alt="Pier evenings"><div class="card"><h3>Pier Evenings</h3><p>Solar-lit romance over the river.</p></div></article>
       </div>
     </div>
   </section>
 
-  <!-- ADOPT = CANOPY -->
+  <!-- ADOPT A TREE = CANOPY + Coming Soon -->
   <section id="adopt" class="section band canopy">
-    <div class="container grid-2">
-      <div>
-        <h2>Adopt a Tree</h2>
-        <p>Help reforest and protect habitats. Sponsor a tree and receive updates, GPS tagging, and seasonal notes.</p>
-        <ul>
-          <li><strong>Seed</strong> — sapling + update</li>
-          <li><strong>Grove</strong> — 5 trees + quarterly notes</li>
-          <li><strong>Canopy</strong> — 20 trees + on-site naming</li>
-        </ul>
-        <a class="btn gold" href="#contact">Plant the Future</a>
-      </div>
-      <div class="card">
-        <h3>Other Programs</h3>
-        <p>Residencies for artists & researchers, botanical tours, and collaborations with local artisans.</p>
-      </div>
+    <div class="container">
+      <h2>Adopt a Tree <span class="badge">Coming soon</span></h2>
+      <p class="kicker">Help reforest and protect habitats. Sponsor a tree and receive updates, GPS tagging, and seasonal notes.</p>
+      <!-- (Removed the "Other Programs" card per your request) -->
     </div>
   </section>
 
-  <!-- PARTNERS = PLAIN -->
+  <!-- PARTNERS (PLAIN) -->
   <section id="partners" class="section">
     <div class="container">
       <h2>Partners</h2>
@@ -260,7 +256,14 @@ p{color:var(--muted); margin:.4rem 0 1rem}
 <footer class="footer">
   <div class="container row">
     <div>Shinan Sacha</div>
-    <nav><a href="#about">About</a><a href="#redefining">Redefining Luxury</a><a href="#systems">Systems</a><a href="#partners">Partners</a><a href="#adopt">Programs</a><a href="#contact">Contact</a></nav>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#systems">Living Systems</a>
+      <a href="#activities">Activities</a>
+      <a href="#adopt">Adopt a Tree</a>
+      <a href="#partners">Partners</a>
+      <a href="#contact">Contact</a>
+    </nav>
     <small>© <span id="y"></span> Shinan Sacha — Luxury without extraction.</small>
   </div>
 </footer>
