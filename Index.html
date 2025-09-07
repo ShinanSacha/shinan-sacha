@@ -45,6 +45,9 @@ p{color:var(--muted); margin:.4rem 0 1rem}
 }
 .minh{min-height:440px}
 
+/* Remove divider after About only */
+#about::after{ content:none !important; }
+
 /* Layout */
 .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(1rem,3vw,2rem)}
 @media (max-width:900px){.grid-3{grid-template-columns:1fr}}
@@ -101,7 +104,7 @@ p{color:var(--muted); margin:.4rem 0 1rem}
 .hero .inner{position:relative; z-index:1; text-align:center; padding:8vh 2rem 10vh}
 .hero .eyebrow{color:var(--gold); letter-spacing:.25em; text-transform:uppercase; font-size:.85rem}
 
-/* Icons (inline svgs) */
+/* Icons */
 .icon{width:40px;height:40px; display:grid; place-items:center; border:1px solid rgba(217,181,111,.25); border-radius:11px; margin-bottom:.6rem}
 .icon svg{width:22px;height:22px;color:var(--gold)}
 .icon svg *{fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
@@ -129,7 +132,7 @@ form.card button{margin-top:.4rem}
     <button class="menu" aria-expanded="false" aria-controls="mnav">Menu</button>
     <nav id="mnav" class="site-nav" aria-label="Main">
       <a href="#about">About</a>
-      <!-- Redefining not in top nav, per request -->
+      <!-- Redefining not in top nav -->
       <a href="#systems">Living Systems</a>
       <a href="#activities">Activities</a>
       <a href="#adopt">Adopt a Tree</a>
@@ -150,7 +153,7 @@ form.card button{margin-top:.4rem}
     </div>
   </section>
 
-  <!-- ABOUT (forced inline background to preserve the good look) -->
+  <!-- ABOUT -->
   <section id="about" class="section minh"
     style="background:
       linear-gradient(180deg,rgba(0,0,0,.26),rgba(0,0,0,.30)) ,
@@ -161,7 +164,7 @@ form.card button{margin-top:.4rem}
     </div>
   </section>
 
-  <!-- REDEFINING LUXURY (AFTER About; not in nav) -->
+  <!-- REDEFINING LUXURY -->
   <section id="redefining" class="section minh"
     style="background:
       linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.26)) ,
@@ -216,10 +219,10 @@ form.card button{margin-top:.4rem}
     </div>
   </section>
 
-  <!-- ACTIVITIES (4 cards like Partners) -->
+  <!-- ACTIVITIES -->
   <section id="activities" class="section">
     <div class="container">
-      <h2>Activities</h2>
+      <h2>Activities <span class="chip">Coming soon</span></h2>
       <p class="kicker">Immersion over consumption. Quiet experiences that deepen your connection.</p>
       <div class="grid-2">
         <article class="imgcard">
@@ -260,7 +263,7 @@ form.card button{margin-top:.4rem}
       linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.30)) ,
       url('jungletexture1.jpg') center/cover no-repeat;">
     <div class="container">
-      <h2>Adopt a Tree</h2>
+      <h2>Adopt a Tree <span class="chip">Coming soon</span></h2>
       <p>Help reforest and protect habitats. Sponsor a tree and receive updates, GPS tagging, and seasonal notes.</p>
       <ul>
         <li><strong>Seed</strong> — sapling + update</li>
@@ -334,8 +337,12 @@ form.card button{margin-top:.4rem}
 
 <script>
 document.getElementById('y').textContent=new Date().getFullYear();
-const menuBtn=document.querySelector('.menu'); const nav=document.getElementById('mnav');
-menuBtn.addEventListener('click',()=>{const o=nav.classList.toggle('open'); menuBtn.setAttribute('aria-expanded',o);});
+const menuBtn=document.querySelector('.menu'); 
+const nav=document.getElementById('mnav');
+menuBtn.addEventListener('click',()=>{
+  const o=nav.classList.toggle('open'); 
+  menuBtn.setAttribute('aria-expanded',o);
+});
 </script>
 </body>
 </html>
