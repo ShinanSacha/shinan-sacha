@@ -14,12 +14,12 @@
 :root{
   --bg:#0b1510; --ink:#e8eee9; --muted:#cfe0d5; --gold:#d9b56f; --edge:rgba(217,181,111,.55);
 
-  /* PLACEHOLDER TEXTURES — swap with your own when ready */
-  --tx-wood:    url('images/wood.jpg?v=1');
-  --tx-smoke:   url('images/smoke.jpg?v=1');
-  --tx-leather: url('images/leather.jpg?v=1');
-  --tx-canopy:  url('images/canopy.jpg?v=1');
-  --tx-clay:    url('images/clay.jpg?v=1');
+  /* PLACEHOLDERS (replace later with your own) */
+  --tx-wood:   url('https://images.unsplash.com/photo-1603052875433-26d65e88168e?auto=format&fit=crop&w=1600&q=80');
+  --tx-smoke:  url('https://images.unsplash.com/photo-1520453803296-c39eabe2dab4?auto=format&fit=crop&w=1600&q=80');
+  --tx-leather:url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=1600&q=80');
+  --tx-canopy: url('https://images.unsplash.com/photo-1607777646566-6a8a2a5d0a74?auto=format&fit=crop&w=1600&q=80');
+  --tx-clay:   url('https://images.unsplash.com/photo-1620641788421-7b5e3eec95bf?auto=format&fit=crop&w=1600&q=80');
 }
 
 *{box-sizing:border-box} html,body{margin:0;padding:0}
@@ -53,14 +53,14 @@ p{color:var(--muted); margin:.4rem 0 1rem}
 .band.leather::before,
 .band.canopy::before,
 .band.clay::before{
-  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none; opacity:.96;
+  content:""; position:absolute; inset:0; z-index:-1; opacity:.96;
   background-position:center; background-size:cover; background-repeat:no-repeat;
 }
-.band.wood::before{    background-image:linear-gradient(180deg,rgba(0,0,0,.26),rgba(0,0,0,.30)), var(--tx-wood); }
-.band.smoke::before{   background-image:linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.26)), var(--tx-smoke); }
-.band.leather::before{ background-image:linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.26)), var(--tx-leather); }
-.band.canopy::before{  background-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.24)), var(--tx-canopy); }
-.band.clay::before{    background-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.24)), var(--tx-clay); }
+.band.wood::before{   background-image:linear-gradient(180deg,rgba(0,0,0,.26),rgba(0,0,0,.30)), var(--tx-wood); }
+.band.smoke::before{  background-image:linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.26)), var(--tx-smoke); }
+.band.leather::before{background-image:linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.26)), var(--tx-leather); }
+.band.canopy::before{ background-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.24)), var(--tx-canopy); }
+.band.clay::before{   background-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.24)), var(--tx-clay); }
 
 /* layout helpers */
 .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(1rem,3vw,2rem)}
@@ -88,26 +88,23 @@ p{color:var(--muted); margin:.4rem 0 1rem}
      border:1px solid var(--edge); transition:box-shadow .15s, background .15s, color .15s}
 .btn:hover{box-shadow:0 0 0 6px rgba(217,181,111,.18)}
 .btn.gold{background:var(--gold); color:#1a1206; border-color:var(--gold)}
-.btn.ghost{background:transparent; color:var(--ink)}
-/* crisp hero button */
+.btn.ghost{background:transparent; color:#1a1206; border-color:var(--gold)}
 .hero-cta .btn{
   background:rgba(0,0,0,.42); border:2px solid rgba(217,181,111,.85);
-  box-shadow:none; backdrop-filter:none; -webkit-backdrop-filter:none; transform:translateZ(0);
 }
 .hero-cta .btn:hover{ background:var(--gold); color:#1a1206; }
 
 /* HERO */
 .hero{
-  position:relative; min-height:100svh; display:grid; place-items:center; padding:0; isolation:isolate;
-  background: url('images/hero.jpg?v=1') center/cover no-repeat;
+  position:relative; min-height:100svh; display:grid; place-items:center; padding:0;
+  background:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
 }
-.hero::before{content:""; position:absolute; inset:0; z-index:0; background:linear-gradient(180deg,rgba(0,0,0,.36),rgba(0,0,0,.36))}
-.hero .inner{position:relative; z-index:1; text-align:center; padding:10vh 2rem 12vh}
+.hero::before{content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.36),rgba(0,0,0,.36))}
+.hero .inner{position:relative; text-align:center; padding:10vh 2rem 12vh}
 .hero .eyebrow{color:var(--gold); letter-spacing:.25em; text-transform:uppercase; font-size:.85rem}
 .hero h1{margin:.4rem 0 .6rem}
 .hero p{letter-spacing:.35em; text-transform:uppercase; opacity:.95}
 .hero .actions{margin-top:1.2rem}
-/* golden divider under hero */
 .hero::after{
   content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px;
   background:linear-gradient(90deg,transparent, rgba(217,181,111,.7), transparent);
@@ -120,10 +117,9 @@ p{color:var(--muted); margin:.4rem 0 1rem}
 @media (max-width:760px){
   .menu{display:inline-flex; align-items:center; gap:.4rem}
   .site-nav{
-    display:none; position:absolute; right:1rem; top:56px; z-index:70;
+    display:none; position:absolute; right:1rem; top:56px;
     background:#0f2219; border:1px solid rgba(217,181,111,.18);
     border-radius:14px; padding:.35rem; width:min(85vw,320px);
-    box-shadow:0 18px 40px rgba(0,0,0,.35)
   }
   .site-nav.open{display:block}
   .site-nav a{display:block; padding:.6rem .8rem}
@@ -179,21 +175,9 @@ p{color:var(--muted); margin:.4rem 0 1rem}
       <h2>Redefining Luxury</h2>
       <div class="kicker">Old versus new—excess versus coherence.</div>
       <div class="grid-3">
-        <article class="card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7h16M7 4v6"/></svg></div>
-          <h3>Old Model</h3>
-          <p>Excess & display. Hidden extraction. Debt & waste.</p>
-        </article>
-        <article class="card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3v18M4 12h16"/></svg></div>
-          <h3>New Model</h3>
-          <p>Coherence & restoration. Fair pay & culture. Living systems.</p>
-        </article>
-        <article class="card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 21c4-3 7-6 7-10a7 7 0 10-14 0c0 4 3 7 7 10z"/></svg></div>
-          <h3>Guests as Stewards</h3>
-          <p>Every stay restores the forest and strengthens the local web.</p>
-        </article>
+        <article class="card"><h3>Old Model</h3><p>Excess & display. Hidden extraction. Debt & waste.</p></article>
+        <article class="card"><h3>New Model</h3><p>Coherence & restoration. Fair pay & culture. Living systems.</p></article>
+        <article class="card"><h3>Guests as Stewards</h3><p>Every stay restores the forest and strengthens the local web.</p></article>
       </div>
     </div>
   </section>
@@ -203,21 +187,9 @@ p{color:var(--muted); margin:.4rem 0 1rem}
     <div class="container">
       <h2>Living Systems</h2>
       <div class="grid-3">
-        <article class="card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 8h16M6 16h12"/></svg></div>
-          <h3>Nature × Tech</h3>
-          <p>Solar, water, and soil systems tuned to the forest. Quiet tech that protects life.</p>
-        </article>
-        <article class="card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 21c4-3 7-6 7-10a7 7 0 10-14 0c0 4 3 7 7 10z"/></svg></div>
-          <h3>Community First</h3>
-          <p>Fair wages, artisan partnership, cultural integrity. Wealth that circulates locally.</p>
-        </article>
-        <article class="card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h6v6H4zM14 14h6v6h-6z"/></svg></div>
-          <h3>Regeneration</h3>
-          <p>Reforestation, conservation, and design that gives more than it takes.</p>
-        </article>
+        <article class="card"><h3>Nature × Tech</h3><p>Solar, water, and soil systems tuned to the forest. Quiet tech that protects life.</p></article>
+        <article class="card"><h3>Community First</h3><p>Fair wages, artisan partnership, cultural integrity. Wealth that circulates locally.</p></article>
+        <article class="card"><h3>Regeneration</h3><p>Reforestation, conservation, and design that gives more than it takes.</p></article>
       </div>
     </div>
   </section>
@@ -228,18 +200,9 @@ p{color:var(--muted); margin:.4rem 0 1rem}
       <h2>Activities</h2>
       <p class="kicker">Immersion over consumption. Try these first experiences while the project grows:</p>
       <div class="grid-3">
-        <article class="imgcard">
-          <img src="images/activity1.jpg?v=1" alt="Botanical walk">
-          <div class="card"><h3>Botanical Walk</h3><p>Native species & medicinal plants.</p></div>
-        </article>
-        <article class="imgcard">
-          <img src="images/activity2.jpg?v=1" alt="Butterfly house">
-          <div class="card"><h3>Mariposario</h3><p>Observe metamorphosis in a protected habitat.</p></div>
-        </article>
-        <article class="imgcard">
-          <img src="images/activity3.jpg?v=1" alt="Pier evenings">
-          <div class="card"><h3>Pier Evenings</h3><p>Solar-lit romance over the river.</p></div>
-        </article>
+        <article class="imgcard"><img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad1?auto=format&fit=crop&w=1000&q=80" alt="Botanical walk"><div class="card"><h3>Botanical Walk</h3></div></article>
+        <article class="imgcard"><img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1000&q=80" alt="Butterfly house"><div class="card"><h3>Mariposario</h3></div></article>
+        <article class="imgcard"><img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1000&q=80" alt="Pier evenings"><div class="card"><h3>Pier Evenings</h3></div></article>
       </div>
     </div>
   </section>
@@ -270,20 +233,8 @@ p{color:var(--muted); margin:.4rem 0 1rem}
       <h2>Partners</h2>
       <p class="kicker">Trusted local allies who make the experience seamless.</p>
       <div class="grid-2">
-        <article class="imgcard">
-          <img src="images/partners-mercedes.jpg?v=1" alt="Hotel Mercedes">
-          <div class="card">
-            <h3>Hotel Mercedes</h3>
-            <p>The oldest hotel in town—your comfortable base before the journey to the retreat.</p>
-          </div>
-        </article>
-        <article class="imgcard">
-          <img src="images/lacabana.jpg?v=1" alt="La Cabaña Lodge">
-          <div class="card">
-            <h3>La Cabaña Lodge</h3>
-            <p>Gateway to the island and jungle, operated by trusted local hosts.</p>
-          </div>
-        </article>
+        <article class="imgcard"><img src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1000&q=80" alt="Hotel Mercedes"><div class="card"><h3>Hotel Mercedes</h3></div></article>
+        <article class="imgcard"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1000&q=80" alt="La Cabaña Lodge"><div class="card"><h3>La Cabaña Lodge</h3></div></article>
       </div>
     </div>
   </section>
@@ -294,13 +245,12 @@ p{color:var(--muted); margin:.4rem 0 1rem}
       <div>
         <h2>Contact / Bookings</h2>
         <p>Email: <a href="mailto:contact@yourdomain.com">contact@yourdomain.com</a><br>WhatsApp: +XX XXXXXXXX</p>
-        <p>Every message moves the project forward.</p>
       </div>
       <form name="contact" method="POST" data-netlify="true" class="card">
         <input type="hidden" name="form-name" value="contact">
-        <label> Your name <br><input required type="text" name="name"></label>
-        <label> Your email <br><input required type="email" name="email"></label>
-        <label> Your message <br><textarea required name="message" rows="5"></textarea></label>
+        <label>Your name<br><input required type="text" name="name"></label>
+        <label>Your email<br><input required type="email" name="email"></label>
+        <label>Your message<br><textarea required name="message" rows="5"></textarea></label>
         <button class="btn gold" type="submit">Send</button>
       </form>
     </div>
@@ -317,8 +267,12 @@ p{color:var(--muted); margin:.4rem 0 1rem}
 
 <script>
 document.getElementById('y').textContent=new Date().getFullYear();
-const menuBtn=document.querySelector('.menu'); const nav=document.getElementById('mnav');
-menuBtn.addEventListener('click',()=>{const o=nav.classList.toggle('open'); menuBtn.setAttribute('aria-expanded',o);});
+const menuBtn=document.querySelector('.menu'); 
+const nav=document.getElementById('mnav');
+menuBtn.addEventListener('click', ()=>{
+  const open = nav.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded', open);
+});
 </script>
 </body>
 </html>
