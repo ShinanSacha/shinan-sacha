@@ -32,27 +32,27 @@ p{color:var(--muted); margin:.4rem 0 1rem}
 .kicker{max-width:62ch; margin:0 auto 1.6rem; text-align:center}
 
 .section{position:relative; padding:clamp(2.8rem,6vw,5rem) 0; isolation:isolate}
-.section::after{ /* golden divider */
+.section::after{
   content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px;
   background:linear-gradient(90deg,transparent, rgba(217,181,111,.7), transparent);
   pointer-events:none;
 }
 
-/* TEXTURED BANDS (placeholders) */
+/* TEXTURED BANDS (all placeholders) */
 .band::before{
   content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
   background-position:center; background-size:cover; background-repeat:no-repeat;
-  background-color:#11241b; opacity:.96; /* safe fallback */
+  background-color:#11241b; opacity:.96;
 }
 .band.about::before{
   background-image:
     linear-gradient(180deg,rgba(0,0,0,.26),rgba(0,0,0,.30)),
-    url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=2000&q=80'); /* mahogany */
+    url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=2000&q=80'); /* mahogany wall */
 }
 .band.redef::before{
   background-image:
     linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.26)),
-    url('https://images.unsplash.com/photo-1502944550040-75345974929e?auto=format&fit=crop&w=2000&q=80'); /* smoke */
+    url('https://images.unsplash.com/photo-1502944550040-75345974929e?auto=format&fit=crop&w=2000&q=80'); /* smoke/blue light */
 }
 .band.systems::before{
   background-image:
@@ -100,10 +100,10 @@ p{color:var(--muted); margin:.4rem 0 1rem}
 .badge{display:inline-block; font:700 12px/1 Inter; letter-spacing:.1em; text-transform:uppercase;
   padding:.4rem .6rem; border:1px solid var(--edge); border-radius:999px; margin-left:.6rem; color:var(--gold)}
 
-/* hero */
+/* hero — now using a placeholder image too */
 .hero{
   position:relative; min-height:88vh; display:grid; place-items:center; padding:0; margin-bottom:0; isolation:isolate;
-  background:url('images/hero.jpg') center/cover no-repeat; /* your own file; safe if missing */
+  background:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
   background-color:#0e1a15;
 }
 .hero::before{content:""; position:absolute; inset:0; z-index:0; background:linear-gradient(180deg,rgba(0,0,0,.34),rgba(0,0,0,.36))}
