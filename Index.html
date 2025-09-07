@@ -8,232 +8,284 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
 <style>
 :root{
-  /* COLORS */
-  --bg:#0b1510;
-  --ink:#e8eee9;
-  --muted:#c3cec7;
-  --gold:#d9b56f;
-  --edge:rgba(217,181,111,.55);
-
-  /* SIZING */
-  --header-h:70px;
-
-  /* TEXTURES (placeholders – swap when ready) */
-  --tx-wood:url('https://images.unsplash.com/photo-15197106164239-da123dc03ef4?q=80&w=2400');   /* mahogany */
-  --tx-leather:url('https://images.unsplash.com/photo-16063135634200-5b6bc8806f0a?q=80&w=2400'); /* leather */
+  --bg:#0b1510; --ink:#e8eee9; --muted:#cfe0d5; --gold:#d9b56f; --edge:rgba(217,181,111,.55);
+  /* TEXTURES: use these exact filenames in /images */
+  --tx-wood:   url('images/wood.jpg');
+  --tx-smoke:  url('images/smoke.jpg');
+  --tx-canopy: url('images/canopy.jpg');
+  --tx-clay:   url('images/clay.jpg');
 }
-
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
+*{box-sizing:border-box} html,body{margin:0;padding:0}
 body{
   color:var(--ink);
-  background:linear-gradient(180deg,#08130f,#0b1510);
+  background:linear-gradient(180deg,#08130f,#0b1510 40%,#09140f);
   font:400 16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
   overflow-x:hidden;
 }
-h1,h2,h3{font-family:Cinzel, Georgia, serif; line-height:1.15; letter-spacing:.02em; margin:.2rem 0 .6rem}
-h1{font-size:clamp(2.2rem,6vw,4rem)}
-h2{font-size:clamp(1.6rem,3.5vw,2.4rem)}
-h3{font-size:clamp(1.2rem,2.2vw,1.4rem)}
-p{color:var(--muted); margin:.5rem 0 1rem}
-.container{width:min(1100px,92vw); margin:0 auto}
-
-.section{padding:clamp(2rem,6vw,5rem) 0; scroll-margin-top:calc(var(--header-h) + 14px);}
-.section.alt{background:linear-gradient(180deg,#0e1e17,#0b1510)}
-
-.card{background:rgba(17,38,29,.6); border:1px solid rgba(217,181,111,.18); border-radius:16px; padding:1rem 1.1rem; backdrop-filter:saturate(110%) blur(2px)}
-
-/* Header */
-.header{
-  position:sticky; top:0; z-index:50; height:var(--header-h);
-  display:flex; align-items:center;
-  backdrop-filter: blur(6px);
-  background:linear-gradient(180deg,rgba(11,26,18,.92),rgba(11,26,18,.55),rgba(11,26,18,0));
-  border-bottom:1px solid rgba(217,181,111,.12);
+.container{width:min(1120px,92vw); margin:0 auto}
+h1,h2,h3{font-family:Cinzel, Georgia, serif; line-height:1.15; margin:.2rem 0 .6rem}
+h1{font-size:clamp(2rem,7vw,4.2rem)}
+h2{font-size:clamp(1.6rem,3.2vw,2.4rem); color:var(--gold); text-align:center; margin-bottom:1.2rem}
+h3{font-size:clamp(1.1rem,2vw,1.25rem)}
+p{color:var(--muted); margin:.4rem 0 1rem}
+.kicker{max-width:62ch; margin:0 auto 1.6rem; text-align:center}
+.section{position:relative; padding:clamp(2.8rem,6vw,5rem) 0; isolation:isolate}
+/* global golden divider under every section */
+.section::after{
+  content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px;
+  background:linear-gradient(90deg,transparent, rgba(217,181,111,.7), transparent);
+  pointer-events:none;
 }
-.nav{display:flex; align-items:center; justify-content:space-between; gap:1rem; width:min(1100px,92vw); margin:0 auto}
-.brand{font-weight:700; text-decoration:none; color:var(--ink)}
-.site-nav{display:flex; gap:.6rem; align-items:center}
-.site-nav a{white-space:nowrap; color:var(--muted); text-decoration:none; padding:.45rem .7rem; border-radius:10px}
+/* band backgrounds per section */
+.band.wood::before,
+.band.smoke::before,
+.band.canopy::before,
+.band.clay::before{
+  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none; opacity:.96;
+  background-position:center; background-size:cover; background-repeat:no-repeat;
+}
+.band.wood::before{  background-image:linear-gradient(180deg,rgba(0,0,0,.26),rgba(0,0,0,.30)), var(--tx-wood); }
+.band.smoke::before{ background-image:linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.26)), var(--tx-smoke); }
+.band.canopy::before{background-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.24)), var(--tx-canopy); }
+.band.clay::before{  background-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.24)), var(--tx-clay); }
+
+/* layout helpers */
+.grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(1rem,3vw,2rem)}
+@media (max-width:900px){.grid-3{grid-template-columns:1fr}}
+.grid-2{display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(1rem,3vw,2rem)}
+@media (max-width:900px){.grid-2{grid-template-columns:1fr}}
+.card{background:rgba(17,38,29,.6); border:1px solid rgba(217,181,111,.18); border-radius:16px; padding:1rem 1.1rem; box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.imgcard{border-radius:14px; overflow:hidden; border:1px solid rgba(217,181,111,.15); background:#0f1e19}
+.imgcard img{width:100%; height:230px; object-fit:cover; display:block}
+
+/* HEADER */
+.header{position:sticky; top:0; z-index:60; backdrop-filter:saturate(120%) blur(6px);
+        background:linear-gradient(180deg,rgba(11,26,18,.92),rgba(11,26,18,.55),rgba(11,26,18,0));
+        border-bottom:1px solid rgba(217,181,111,.12)}
+.nav{display:flex; align-items:center; justify-content:space-between; padding:.8rem 0}
+.brand{color:var(--ink); text-decoration:none; font-weight:700; letter-spacing:.5px}
+.site-nav{display:flex; gap:1rem; align-items:center}
+.site-nav a{color:var(--muted); text-decoration:none; padding:.4rem .6rem; border-radius:10px; white-space:nowrap}
 .site-nav a:hover{color:var(--ink); background:rgba(217,181,111,.08)}
-.menu{display:none; background:transparent; color:var(--ink); border:1px solid rgba(217,181,111,.35); padding:.45rem .7rem; border-radius:10px}
+.menu{display:none; background:transparent; color:var(--ink); border:1px solid var(--edge); padding:.45rem .7rem; border-radius:10px}
+
+/* BUTTONS */
+.btn{display:inline-block; padding:.74rem 1.1rem; border-radius:12px; text-decoration:none; font-weight:700;
+     border:1px solid var(--edge); transition:box-shadow .15s, background .15s, color .15s}
+.btn:hover{box-shadow:0 0 0 6px rgba(217,181,111,.18)}
+.btn.gold{background:var(--gold); color:#1a1206; border-color:var(--gold)}
+.btn.ghost{background:transparent; color:var(--ink)}
+/* crisp hero button */
+.hero-cta .btn{
+  background:rgba(0,0,0,.42); border:2px solid rgba(217,181,111,.85);
+  box-shadow:none; backdrop-filter:none; -webkit-backdrop-filter:none; transform:translateZ(0);
+}
+.hero-cta .btn:hover{ background:var(--gold); color:#1a1206; }
+
+/* HERO */
+.hero{
+  position:relative; min-height:82vh; display:grid; place-items:center; padding:0; isolation:isolate;
+  background: url('images/hero.jpg') center/cover no-repeat fixed;
+}
+.hero::before{content:""; position:absolute; inset:0; z-index:0; background:linear-gradient(180deg,rgba(0,0,0,.36),rgba(0,0,0,.36))}
+.hero .inner{position:relative; z-index:1; text-align:center; padding:8vh 2rem 10vh}
+.hero .eyebrow{color:var(--gold); letter-spacing:.25em; text-transform:uppercase; font-size:.85rem}
+.hero h1{margin:.4rem 0 .6rem}
+.hero p{letter-spacing:.35em; text-transform:uppercase; opacity:.95}
+.hero .actions{margin-top:1.2rem}
+
+/* ICONS */
+.icon{width:40px;height:40px; display:grid; place-items:center; border:1px solid rgba(217,181,111,.25); border-radius:11px; margin-bottom:.6rem}
+.icon svg{width:22px;height:22px;color:var(--gold)}
 
 @media (max-width:760px){
   .menu{display:inline-flex; align-items:center; gap:.4rem}
   .site-nav{
-    display:none; position:absolute; right:1rem; top:calc(var(--header-h) - 6px); z-index:60;
-    background:#0e1e17; border:1px solid rgba(217,181,111,.18); border-radius:14px; padding:.35rem; width:min(85vw,320px);
+    display:none; position:absolute; right:1rem; top:56px; z-index:70;
+    background:#0f2219; border:1px solid rgba(217,181,111,.18);
+    border-radius:14px; padding:.35rem; width:min(85vw,320px);
     box-shadow:0 18px 40px rgba(0,0,0,.35)
   }
   .site-nav.open{display:block}
-  .site-nav a{display:block}
+  .site-nav a{display:block; padding:.6rem .8rem}
 }
 
-/* Hero */
-.hero{
-  position:relative; isolation:isolate;
-  min-height:90vh; display:grid; place-items:center; padding:0;
-  background:
-    linear-gradient(0deg, rgba(0,0,0,.22), rgba(0,0,0,.22)),           /* soft uniform veil (fixes dark->light band) */
-    url('hero.png') center/cover no-repeat;                            /* your river photo */
-}
-.hero > .inner{width:min(1100px,92vw); text-align:center; padding:clamp(3rem,8vw,5rem) 0}
-.hero h1{margin:.2rem 0 .6rem; text-shadow:0 6px 30px rgba(0,0,0,.35)}
-.hero .eyebrow{letter-spacing:.35em; color:#dcdcdc; opacity:.9; font-size:.88rem}
-.hero .sub{letter-spacing:.35em; color:#dadada; opacity:.95}
-.btn{
-  display:inline-block; padding:.8rem 1.2rem; border-radius:14px; font-weight:700; text-decoration:none;
-  border:2px solid rgba(217,181,111,.65); color:#101610; background:rgba(255,255,255,.06);
-  backdrop-filter: blur(2px); transition:.2s; box-shadow:0 0 0 0 rgba(217,181,111,.0)
-}
-.btn:hover{background:rgba(255,255,255,.12); box-shadow:0 0 0 6px rgba(217,181,111,.18)}
-
-/* Wood band behind About */
-.band{
-  position:relative; border-top:1px solid var(--edge); border-bottom:1px solid var(--edge);
-  background:
-    linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.25)),
-    var(--tx-wood) center/cover no-repeat;
-  padding:clamp(2.2rem,6vw,3.4rem) 0;
-}
-
-/* Pillars */
-.pillars{display:grid; grid-template-columns:repeat(3,1fr); gap:1rem}
-@media (max-width:900px){.pillars{grid-template-columns:1fr}}
-.icon{width:42px;height:42px;display:grid;place-items:center;border:1px solid rgba(217,181,111,.35);border-radius:10px;margin-bottom:.6rem}
-.icon svg{width:22px;height:22px;color:var(--gold)}
-
-/* Activities grid */
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-@media (max-width:1000px){.cards{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:560px){.cards{grid-template-columns:1fr}}
-.imgcard{border-radius:14px;overflow:hidden;border:1px solid rgba(217,181,111,.18); background:rgba(17,38,29,.4)}
-.imgcard img{width:100%;height:220px;object-fit:cover;display:block;filter:saturate(.96) contrast(1.05)}
-.imgcard .card{border-radius:0; border:none}
-
-/* Footer */
-.footer{border-top:1px solid rgba(217,181,111,.18); padding:1.2rem 0 2rem; color:var(--muted); background:linear-gradient(180deg,#0b1510,#09110d)}
+/* FOOTER */
+.footer{border-top:1px solid rgba(217,181,111,.15); padding:1.2rem 0 2rem; color:var(--muted);
+        background:linear-gradient(180deg,#0b1510,#0a1711)}
 .footer .row{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1rem}
-.footer a{color:var(--muted);text-decoration:none;margin-right:.8rem}
+.footer a{color:var(--muted); text-decoration:none; margin-right:.8rem}
 .footer a:hover{color:var(--ink)}
-small{opacity:.9}
 </style>
 </head>
-
 <body>
-<header class="header" role="banner">
-  <div class="nav">
-    <a class="brand" href="#top">Shinan Sacha</a>
-    <button class="menu" aria-controls="mnav" aria-expanded="false">Menu</button>
+<header class="header">
+  <div class="container nav">
+    <a class="brand" href="#home">Shinan Sacha</a>
+    <button class="menu" aria-expanded="false" aria-controls="mnav">Menu</button>
     <nav id="mnav" class="site-nav" aria-label="Main">
       <a href="#about">About</a>
+      <a href="#redefining">Philosophy</a>
       <a href="#systems">Living Systems</a>
       <a href="#activities">Activities</a>
-      <a href="#adopt">Adopt a Tree</a>
-      <a href="#contact">Contact</a>
+      <a href="#partners">Partners</a>
+      <a href="#adopt">Programs</a>
+      <a href="#contact" class="btn ghost">Contact</a>
     </nav>
   </div>
 </header>
 
-<main id="top">
+<main id="home">
   <!-- HERO -->
-  <section class="hero" aria-label="Welcome">
-    <div class="inner">
-      <p class="eyebrow">WELCOME TO</p>
+  <section class="hero">
+    <div class="inner container hero-cta">
+      <p class="eyebrow">Welcome to</p>
       <h1>Shinan Sacha</h1>
-      <p class="sub">ECO LODGE &amp; WELLNESS RETREAT</p>
-      <p style="margin-top:1.2rem"><a class="btn" href="#about">ENTER</a></p>
+      <p>Eco Lodge & Wellness Retreat</p>
+      <div class="actions"><a class="btn" href="#about">Enter</a></div>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="section">
-    <div class="band">
-      <div class="container" style="text-align:center">
-        <h2 style="color:var(--gold); margin-bottom:.2rem">About Us</h2>
-        <p style="max-width:70ch;margin-inline:auto">
-          <strong>Shinan Sacha</strong> means “forest of knowledge.” A sanctuary in the making where luxury is
-          measured by coherence—nature, technology, and culture aligned to give more than they take.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- REDEFINING LUXURY -->
-  <section class="section" id="redefining">
+  <!-- ABOUT (wood) -->
+  <section id="about" class="section band wood">
     <div class="container">
-      <h2 style="color:var(--gold); text-align:center">Redefining Luxury</h2>
-      <div class="pillars" style="margin-top:1rem">
+      <h2>About Us</h2>
+      <p class="kicker"><strong>Shinan Sacha</strong> means “forest of knowledge.” A sanctuary in the making where luxury is measured by coherence—nature, technology, and culture aligned to give more than they take.</p>
+    </div>
+  </section>
+
+  <!-- REDEFINING LUXURY (smoke) -->
+  <section id="redefining" class="section band smoke">
+    <div class="container">
+      <h2>Redefining Luxury</h2>
+      <div class="kicker">Old versus new—excess versus coherence.</div>
+      <div class="grid-3">
         <article class="card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v20M4 8h16M6 16h12"/></svg></div>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7h16M7 4v6"/></svg></div>
           <h3>Old Model</h3>
-          <p>Excess &amp; display. Hidden extraction. Debt &amp; waste.</p>
+          <p>Excess & display. Hidden extraction. Debt & waste.</p>
+        </article>
+        <article class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3v18M4 12h16"/></svg></div>
+          <h3>New Model</h3>
+          <p>Coherence & restoration. Fair pay & culture. Living systems.</p>
         </article>
         <article class="card">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 21c4-3 7-6 7-10a7 7 0 10-14 0c0 4 3 7 7 10z"/></svg></div>
-          <h3>New Model</h3>
-          <p>Coherence &amp; restoration. Fair pay &amp; culture. Living systems.</p>
+          <h3>Guests as Stewards</h3>
+          <p>Every stay restores the forest and strengthens the local web.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVING SYSTEMS (plain deep green for breathing room) -->
+  <section id="systems" class="section">
+    <div class="container">
+      <h2>Living Systems</h2>
+      <div class="grid-3">
+        <article class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 8h16M6 16h12"/></svg></div>
+          <h3>Nature × Tech</h3>
+          <p>Solar, water, and soil systems tuned to the forest. Quiet tech that protects life.</p>
         </article>
         <article class="card">
-          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h6v6H4zM14 14h6v6h-6zM14 4l6 6M4 14l6 6"/></svg></div>
-          <h3>Design Ethos</h3>
-          <p>Nature × Tech; minimal footprint, maximum life.</p>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 21c4-3 7-6 7-10a7 7 0 10-14 0c0 4 3 7 7 10z"/></svg></div>
+          <h3>Community First</h3>
+          <p>Fair wages, artisan partnership, cultural integrity. Wealth that circulates locally.</p>
+        </article>
+        <article class="card">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h6v6H4zM14 14h6v6h-6z"/></svg></div>
+          <h3>Regeneration</h3>
+          <p>Reforestation, conservation, and design that gives more than it takes.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ACTIVITIES -->
-  <section id="activities" class="section alt">
+  <!-- ACTIVITIES (plain deep green) -->
+  <section id="activities" class="section">
     <div class="container">
-      <h2 style="color:var(--gold); text-align:center">Activities</h2>
-      <p style="text-align:center; max-width:70ch; margin-inline:auto">
-        Immersion over consumption. Try these first experiences while the project grows:
-      </p>
-      <div class="cards" style="margin-top:1rem">
-        <article class="imgcard"><img src="https://images.unsplash.com/photo-1526312426976-593c2d0b-forest?q=80&w=1600" alt=""><div class="card"><h3>Botanical Walk</h3><p>Native species &amp; medicinal plants.</p></div></article>
-        <article class="imgcard"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600" alt=""><div class="card"><h3>Mariposario</h3><p>Observe metamorphosis in a protected habitat.</p></div></article>
-        <article class="imgcard"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1600" alt=""><div class="card"><h3>Pier Evenings</h3><p>Solar-lit romance over the river.</p></div></article>
+      <h2>Activities</h2>
+      <p class="kicker">Immersion over consumption. Try these first experiences while the project grows:</p>
+      <div class="grid-3">
+        <article class="imgcard">
+          <img src="images/activity1.jpg" alt="Botanical walk">
+          <div class="card"><h3>Botanical Walk</h3><p>Native species & medicinal plants.</p></div>
+        </article>
+        <article class="imgcard">
+          <img src="images/activity2.jpg" alt="Butterfly house">
+          <div class="card"><h3>Mariposario</h3><p>Observe metamorphosis in a protected habitat.</p></div>
+        </article>
+        <article class="imgcard">
+          <img src="images/activity3.jpg" alt="Pier evenings">
+          <div class="card"><h3>Pier Evenings</h3><p>Solar-lit romance over the river.</p></div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ADOPT A TREE -->
-  <section id="adopt" class="section">
-    <div class="container" style="display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(1rem,3vw,3rem)">
+  <!-- ADOPT (canopy) -->
+  <section id="adopt" class="section band canopy">
+    <div class="container grid-2">
       <div>
-        <h2 style="color:var(--gold)">Adopt a Tree</h2>
-        <p>Help reforest and protect habitats. Sponsor a tree and receive updates on growth, GPS tagging, and seasonal notes from the land.</p>
-        <a class="btn" href="#contact">Plant the Future</a>
-      </div>
-      <div class="card">
-        <h3>Transparent Tiers</h3>
+        <h2>Adopt a Tree</h2>
+        <p>Help reforest and protect habitats. Sponsor a tree and receive updates, GPS tagging, and seasonal notes.</p>
         <ul>
           <li><strong>Seed</strong> — sapling + update</li>
-          <li><strong>Grove</strong> — 5 trees + quarterly field notes</li>
+          <li><strong>Grove</strong> — 5 trees + quarterly notes</li>
           <li><strong>Canopy</strong> — 20 trees + on-site naming</li>
         </ul>
+        <a class="btn gold" href="#contact">Plant the Future</a>
+      </div>
+      <div class="card">
+        <h3>Other Programs</h3>
+        <p>Residencies for artists & researchers, botanical tours, and collaborations with local artisans.</p>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="section alt">
-    <div class="container" style="display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(1rem,3vw,3rem)">
+  <!-- PARTNERS (plain deep green) -->
+  <section id="partners" class="section">
+    <div class="container">
+      <h2>Partners</h2>
+      <p class="kicker">Trusted local allies who make the experience seamless.</p>
+      <div class="grid-2">
+        <article class="imgcard">
+          <img src="images/partners-mercedes.jpg" alt="Hotel Mercedes">
+          <div class="card">
+            <h3>Hotel Mercedes</h3>
+            <p>The oldest hotel in town—your comfortable base before the journey to the retreat.</p>
+          </div>
+        </article>
+        <article class="imgcard">
+          <img src="images/partners-lacabana.jpg" alt="La Cabaña Lodge">
+          <div class="card">
+            <h3>La Cabaña Lodge</h3>
+            <p>Gateway to the island and jungle, operated by trusted local hosts.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT (clay) -->
+  <section id="contact" class="section band clay">
+    <div class="container grid-2">
       <div>
-        <h2 style="color:var(--gold)">Contact / Bookings</h2>
-        <p>Traveling soon or curious to collaborate? Write to us—every message moves the project forward.</p>
+        <h2>Contact / Bookings</h2>
         <p>Email: <a href="mailto:contact@yourdomain.com">contact@yourdomain.com</a><br>WhatsApp: +XX XXXXXXXX</p>
+        <p>Every message moves the project forward.</p>
       </div>
       <form name="contact" method="POST" data-netlify="true" class="card">
         <input type="hidden" name="form-name" value="contact">
-        <label> Name <br><input required type="text" name="name" style="width:100%"></label>
-        <label> Email <br><input required type="email" name="email" style="width:100%"></label>
-        <label> Message <br><textarea required name="message" rows="5" style="width:100%"></textarea></label>
-        <button class="btn" type="submit">Send</button>
+        <label> Your name <br><input required type="text" name="name"></label>
+        <label> Your email <br><input required type="email" name="email"></label>
+        <label> Your message <br><textarea required name="message" rows="5"></textarea></label>
+        <button class="btn gold" type="submit">Send</button>
       </form>
     </div>
   </section>
@@ -242,22 +294,15 @@ small{opacity:.9}
 <footer class="footer">
   <div class="container row">
     <div>Shinan Sacha</div>
-    <nav><a href="#about">About</a><a href="#redefining">Luxury</a><a href="#adopt">Adopt</a><a href="#contact">Contact</a></nav>
+    <nav><a href="#about">About</a><a href="#redefining">Philosophy</a><a href="#systems">Systems</a><a href="#partners">Partners</a><a href="#adopt">Programs</a><a href="#contact">Contact</a></nav>
     <small>© <span id="y"></span> Shinan Sacha — Luxury without extraction.</small>
   </div>
 </footer>
 
 <script>
-  // mobile menu
-  const menuBtn = document.querySelector('.menu');
-  const nav = document.getElementById('mnav');
-  menuBtn.addEventListener('click', ()=>{
-    const open = nav.classList.toggle('open');
-    menuBtn.setAttribute('aria-expanded', open);
-  });
-
-  // current year
-  document.getElementById('y').textContent = new Date().getFullYear();
+document.getElementById('y').textContent=new Date().getFullYear();
+const menuBtn=document.querySelector('.menu'); const nav=document.getElementById('mnav');
+menuBtn.addEventListener('click',()=>{const o=nav.classList.toggle('open'); menuBtn.setAttribute('aria-expanded',o);});
 </script>
 </body>
 </html>
