@@ -14,11 +14,11 @@
 :root{
   --bg:#0b1510; --ink:#e8eee9; --muted:#cfe0d5; --gold:#d9b56f; --edge:rgba(217,181,111,.55);
 
-  /* TEXTURES (exact filenames in /images) */
-  --tx-wood:   url('images/wood.jpg?v=1');
-  --tx-smoke:  url('images/smoke.jpg?v=1');
-  --tx-canopy: url('images/canopy.jpg?v=1');
-  --tx-clay:   url('images/clay.jpg?v=1');
+  /* TEXTURES — placeholders (swap to your files later) */
+  --tx-wood:   url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=2400&q=60');
+  --tx-smoke:  url('https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?auto=format&fit=crop&w=2400&q=60');
+  --tx-canopy: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=2400&q=60');
+  --tx-clay:   url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=2400&q=60');
 }
 
 *{box-sizing:border-box} html,body{margin:0;padding:0}
@@ -39,7 +39,7 @@ p{color:var(--muted); margin:.4rem 0 1rem}
 .kicker{max-width:62ch; margin:0 auto 1.6rem; text-align:center}
 
 .section{position:relative; padding:clamp(2.8rem,6vw,5rem) 0; isolation:isolate}
-/* thin golden divider under every section */
+/* golden divider under every section */
 .section::after{
   content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px;
   background:linear-gradient(90deg,transparent, rgba(217,181,111,.7), transparent);
@@ -93,10 +93,10 @@ p{color:var(--muted); margin:.4rem 0 1rem}
 }
 .hero-cta .btn:hover{ background:var(--gold); color:#1a1206; }
 
-/* hero (no 'fixed' to avoid iOS bug) */
+/* hero (no 'fixed' to avoid iOS bug) — placeholder river */
 .hero{
   position:relative; min-height:82vh; display:grid; place-items:center; padding:0; isolation:isolate;
-  background: url('images/hero.jpg?v=1') center/cover no-repeat;
+  background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2400&q=70') center/cover no-repeat;
 }
 .hero::before{content:""; position:absolute; inset:0; z-index:0; background:linear-gradient(180deg,rgba(0,0,0,.36),rgba(0,0,0,.36))}
 .hero .inner{position:relative; z-index:1; text-align:center; padding:8vh 2rem 10vh}
@@ -214,22 +214,22 @@ p{color:var(--muted); margin:.4rem 0 1rem}
     </div>
   </section>
 
-  <!-- ACTIVITIES = PLAIN -->
+  <!-- ACTIVITIES = PLAIN (placeholders) -->
   <section id="activities" class="section">
     <div class="container">
       <h2>Activities</h2>
       <p class="kicker">Immersion over consumption. Try these first experiences while the project grows:</p>
       <div class="grid-3">
         <article class="imgcard">
-          <img src="images/activity1.jpg?v=1" alt="Botanical walk">
+          <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=70" alt="Botanical walk">
           <div class="card"><h3>Botanical Walk</h3><p>Native species & medicinal plants.</p></div>
         </article>
         <article class="imgcard">
-          <img src="images/activity2.jpg?v=1" alt="Butterfly house">
+          <img src="https://images.unsplash.com/photo-1542219550-37153d387c47?auto=format&fit=crop&w=1200&q=70" alt="Butterfly house">
           <div class="card"><h3>Mariposario</h3><p>Observe metamorphosis in a protected habitat.</p></div>
         </article>
         <article class="imgcard">
-          <img src="images/activity3.jpg?v=1" alt="Pier evenings">
+          <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=70" alt="Pier evenings">
           <div class="card"><h3>Pier Evenings</h3><p>Solar-lit romance over the river.</p></div>
         </article>
       </div>
@@ -256,21 +256,21 @@ p{color:var(--muted); margin:.4rem 0 1rem}
     </div>
   </section>
 
-  <!-- PARTNERS = PLAIN -->
+  <!-- PARTNERS = PLAIN (placeholders) -->
   <section id="partners" class="section">
     <div class="container">
       <h2>Partners</h2>
       <p class="kicker">Trusted local allies who make the experience seamless.</p>
       <div class="grid-2">
         <article class="imgcard">
-          <img src="images/partners-mercedes.jpg?v=1" alt="Hotel Mercedes">
+          <img src="https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?auto=format&fit=crop&w=1200&q=70" alt="Hotel Mercedes">
           <div class="card">
             <h3>Hotel Mercedes</h3>
             <p>The oldest hotel in town—your comfortable base before the journey to the retreat.</p>
           </div>
         </article>
         <article class="imgcard">
-          <img src="images/lacabana.jpg?v=1" alt="La Cabaña Lodge">
+          <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=70" alt="La Cabaña Lodge">
           <div class="card">
             <h3>La Cabaña Lodge</h3>
             <p>Gateway to the island and jungle, operated by trusted local hosts.</p>
