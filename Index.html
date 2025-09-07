@@ -11,9 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --bg:#0b1510; --ink:#e8eee9; --muted:#cfe0d5; --gold:#d9b56f; --edge:rgba(217,181,111,.55);
-}
+:root{ --bg:#0b1510; --ink:#e8eee9; --muted:#cfe0d5; --gold:#d9b56f; --edge:rgba(217,181,111,.55) }
 
 /* base */
 *{box-sizing:border-box} html,body{margin:0;padding:0}
@@ -34,24 +32,45 @@ p{color:var(--muted); margin:.4rem 0 1rem}
 .kicker{max-width:62ch; margin:0 auto 1.6rem; text-align:center}
 
 .section{position:relative; padding:clamp(2.8rem,6vw,5rem) 0; isolation:isolate}
-.section::after{ /* thin golden divider */
+.section::after{ /* golden divider */
   content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px;
   background:linear-gradient(90deg,transparent, rgba(217,181,111,.7), transparent);
   pointer-events:none;
 }
 
-/* TEXTURED BANDS (about, redefining, systems, adopt, contact) */
+/* TEXTURED BANDS (placeholders) */
 .band::before{
-  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none; opacity:.92;
+  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
   background-position:center; background-size:cover; background-repeat:no-repeat;
+  background-color:#11241b; opacity:.96; /* safe fallback */
 }
-.band.about::before   { background-image:url('https://source.unsplash.com/1600x900/?mahogany,wood'); }
-.band.redef::before   { background-image:url('https://source.unsplash.com/1600x900/?smoke,dark'); }
-.band.systems::before { background-image:url('https://source.unsplash.com/1600x900/?forest,texture'); }
-.band.adopt::before   { background-image:url('https://source.unsplash.com/1600x900/?jungle,canopy'); }
-.band.contact::before { background-image:url('https://source.unsplash.com/1600x900/?clay,earth'); }
+.band.about::before{
+  background-image:
+    linear-gradient(180deg,rgba(0,0,0,.26),rgba(0,0,0,.30)),
+    url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=2000&q=80'); /* mahogany */
+}
+.band.redef::before{
+  background-image:
+    linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.26)),
+    url('https://images.unsplash.com/photo-1502944550040-75345974929e?auto=format&fit=crop&w=2000&q=80'); /* smoke */
+}
+.band.systems::before{
+  background-image:
+    linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.24)),
+    url('https://images.unsplash.com/photo-1607705729272-6a6b7799e3e2?auto=format&fit=crop&w=2000&q=80'); /* forest texture */
+}
+.band.adopt::before{
+  background-image:
+    linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.24)),
+    url('https://images.unsplash.com/photo-1605727216805-0e36f1cf0c36?auto=format&fit=crop&w=2000&q=80'); /* canopy */
+}
+.band.contact::before{
+  background-image:
+    linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.24)),
+    url('https://images.unsplash.com/photo-1601645199213-3dd98ec6c9dc?auto=format&fit=crop&w=2000&q=80'); /* clay/earth */
+}
 
-/* layout */
+/* grids/cards */
 .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(1rem,3vw,2rem)}
 @media (max-width:900px){.grid-3{grid-template-columns:1fr}}
 .grid-2{display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(1rem,3vw,2rem)}
@@ -78,15 +97,14 @@ p{color:var(--muted); margin:.4rem 0 1rem}
 .btn:hover{box-shadow:0 0 0 6px rgba(217,181,111,.18)}
 .btn.gold{background:var(--gold); color:#1a1206; border-color:var(--gold)}
 .btn.ghost{background:transparent; color:var(--ink)}
-.badge{
-  display:inline-block; font:700 12px/1 Inter, system-ui; letter-spacing:.1em; text-transform:uppercase;
-  padding:.4rem .6rem; border:1px solid var(--edge); border-radius:999px; margin-left:.6rem; color:var(--gold)
-}
+.badge{display:inline-block; font:700 12px/1 Inter; letter-spacing:.1em; text-transform:uppercase;
+  padding:.4rem .6rem; border:1px solid var(--edge); border-radius:999px; margin-left:.6rem; color:var(--gold)}
 
 /* hero */
 .hero{
   position:relative; min-height:88vh; display:grid; place-items:center; padding:0; margin-bottom:0; isolation:isolate;
-  background: url('images/hero.jpg') center/cover no-repeat;
+  background:url('images/hero.jpg') center/cover no-repeat; /* your own file; safe if missing */
+  background-color:#0e1a15;
 }
 .hero::before{content:""; position:absolute; inset:0; z-index:0; background:linear-gradient(180deg,rgba(0,0,0,.34),rgba(0,0,0,.36))}
 .hero::after{content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px;
@@ -158,7 +176,7 @@ p{color:var(--muted); margin:.4rem 0 1rem}
     </div>
   </section>
 
-  <!-- REDEFINING LUXURY (TEXTURED, NO NAV LINK) -->
+  <!-- REDEFINING LUXURY (TEXTURED, part of About) -->
   <section class="section band redef" aria-label="Redefining Luxury">
     <div class="container">
       <h2>Redefining Luxury</h2>
@@ -214,15 +232,15 @@ p{color:var(--muted); margin:.4rem 0 1rem}
       <p class="kicker">Immersion over consumption. Try these first experiences while the project grows:</p>
       <div class="grid-3">
         <article class="imgcard">
-          <img src="https://source.unsplash.com/800x600/?rainforest,trail" alt="Botanical walk">
+          <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80" alt="Botanical walk">
           <div class="card"><h3>Botanical Walk</h3><p>Native species & medicinal plants.</p></div>
         </article>
         <article class="imgcard">
-          <img src="https://source.unsplash.com/800x600/?butterfly,conservatory" alt="Butterfly house">
+          <img src="https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?auto=format&fit=crop&w=1200&q=80" alt="Butterfly house">
           <div class="card"><h3>Mariposario</h3><p>Observe metamorphosis in a protected habitat.</p></div>
         </article>
         <article class="imgcard">
-          <img src="https://source.unsplash.com/800x600/?pier,evening" alt="Pier evenings">
+          <img src="https://images.unsplash.com/photo-1491555103944-7c647fd857e6?auto=format&fit=crop&w=1200&q=80" alt="Pier evenings">
           <div class="card"><h3>Pier Evenings</h3><p>Solar-lit romance over the river.</p></div>
         </article>
       </div>
@@ -256,14 +274,14 @@ p{color:var(--muted); margin:.4rem 0 1rem}
       <p class="kicker">Trusted local allies who make the experience seamless.</p>
       <div class="grid-2">
         <article class="imgcard">
-          <img src="https://source.unsplash.com/800x600/?hotel,lobby" alt="Hotel Mercedes">
+          <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80" alt="Hotel Mercedes">
           <div class="card">
             <h3>Hotel Mercedes</h3>
             <p>The oldest hotel in town—your comfortable base before the journey to the retreat.</p>
           </div>
         </article>
         <article class="imgcard">
-          <img src="https://source.unsplash.com/800x600/?jungle,lodge" alt="La Cabaña Lodge">
+          <img src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?auto=format&fit=crop&w=1200&q=80" alt="La Cabaña Lodge">
           <div class="card">
             <h3>La Cabaña Lodge</h3>
             <p>Gateway to the island and jungle, operated by trusted local hosts.</p>
