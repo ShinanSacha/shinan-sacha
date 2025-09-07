@@ -5,18 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Shinan Sacha — Luxury as living systems</title>
 <meta name="description" content="A sanctuary in the making. Luxury as living systems—regenerative, coherent, alive." />
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
 :root{
   --bg:#0b1510; --ink:#e8eee9; --muted:#cfe0d5; --gold:#d9b56f; --edge:rgba(217,181,111,.55);
-  /* TEXTURES: use these exact filenames in /images */
-  --tx-wood:   url('images/wood.jpg');
-  --tx-smoke:  url('images/smoke.jpg');
-  --tx-canopy: url('images/canopy.jpg');
-  --tx-clay:   url('images/clay.jpg');
+
+  /* TEXTURES (exact filenames in /images) */
+  --tx-wood:   url('images/wood.jpg?v=1');
+  --tx-smoke:  url('images/smoke.jpg?v=1');
+  --tx-canopy: url('images/canopy.jpg?v=1');
+  --tx-clay:   url('images/clay.jpg?v=1');
 }
+
 *{box-sizing:border-box} html,body{margin:0;padding:0}
 body{
   color:var(--ink);
@@ -26,20 +30,23 @@ body{
   overflow-x:hidden;
 }
 .container{width:min(1120px,92vw); margin:0 auto}
+
 h1,h2,h3{font-family:Cinzel, Georgia, serif; line-height:1.15; margin:.2rem 0 .6rem}
 h1{font-size:clamp(2rem,7vw,4.2rem)}
 h2{font-size:clamp(1.6rem,3.2vw,2.4rem); color:var(--gold); text-align:center; margin-bottom:1.2rem}
 h3{font-size:clamp(1.1rem,2vw,1.25rem)}
 p{color:var(--muted); margin:.4rem 0 1rem}
 .kicker{max-width:62ch; margin:0 auto 1.6rem; text-align:center}
+
 .section{position:relative; padding:clamp(2.8rem,6vw,5rem) 0; isolation:isolate}
-/* global golden divider under every section */
+/* thin golden divider under every section */
 .section::after{
   content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px;
   background:linear-gradient(90deg,transparent, rgba(217,181,111,.7), transparent);
   pointer-events:none;
 }
-/* band backgrounds per section */
+
+/* textured bands per your art direction */
 .band.wood::before,
 .band.smoke::before,
 .band.canopy::before,
@@ -47,24 +54,25 @@ p{color:var(--muted); margin:.4rem 0 1rem}
   content:""; position:absolute; inset:0; z-index:-1; pointer-events:none; opacity:.96;
   background-position:center; background-size:cover; background-repeat:no-repeat;
 }
-.band.wood::before{  background-image:linear-gradient(180deg,rgba(0,0,0,.26),rgba(0,0,0,.30)), var(--tx-wood); }
-.band.smoke::before{ background-image:linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.26)), var(--tx-smoke); }
-.band.canopy::before{background-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.24)), var(--tx-canopy); }
-.band.clay::before{  background-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.24)), var(--tx-clay); }
+.band.wood::before{   background-image:linear-gradient(180deg,rgba(0,0,0,.26),rgba(0,0,0,.30)), var(--tx-wood); }
+.band.smoke::before{  background-image:linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.26)), var(--tx-smoke); }
+.band.canopy::before{ background-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.24)), var(--tx-canopy); }
+.band.clay::before{   background-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.24)), var(--tx-clay); }
 
 /* layout helpers */
 .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(1rem,3vw,2rem)}
 @media (max-width:900px){.grid-3{grid-template-columns:1fr}}
 .grid-2{display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(1rem,3vw,2rem)}
 @media (max-width:900px){.grid-2{grid-template-columns:1fr}}
+
 .card{background:rgba(17,38,29,.6); border:1px solid rgba(217,181,111,.18); border-radius:16px; padding:1rem 1.1rem; box-shadow:0 10px 30px rgba(0,0,0,.18)}
 .imgcard{border-radius:14px; overflow:hidden; border:1px solid rgba(217,181,111,.15); background:#0f1e19}
 .imgcard img{width:100%; height:230px; object-fit:cover; display:block}
 
-/* HEADER */
+/* header */
 .header{position:sticky; top:0; z-index:60; backdrop-filter:saturate(120%) blur(6px);
-        background:linear-gradient(180deg,rgba(11,26,18,.92),rgba(11,26,18,.55),rgba(11,26,18,0));
-        border-bottom:1px solid rgba(217,181,111,.12)}
+  background:linear-gradient(180deg,rgba(11,26,18,.92),rgba(11,26,18,.55),rgba(11,26,18,0));
+  border-bottom:1px solid rgba(217,181,111,.12)}
 .nav{display:flex; align-items:center; justify-content:space-between; padding:.8rem 0}
 .brand{color:var(--ink); text-decoration:none; font-weight:700; letter-spacing:.5px}
 .site-nav{display:flex; gap:1rem; align-items:center}
@@ -72,7 +80,7 @@ p{color:var(--muted); margin:.4rem 0 1rem}
 .site-nav a:hover{color:var(--ink); background:rgba(217,181,111,.08)}
 .menu{display:none; background:transparent; color:var(--ink); border:1px solid var(--edge); padding:.45rem .7rem; border-radius:10px}
 
-/* BUTTONS */
+/* buttons */
 .btn{display:inline-block; padding:.74rem 1.1rem; border-radius:12px; text-decoration:none; font-weight:700;
      border:1px solid var(--edge); transition:box-shadow .15s, background .15s, color .15s}
 .btn:hover{box-shadow:0 0 0 6px rgba(217,181,111,.18)}
@@ -85,10 +93,10 @@ p{color:var(--muted); margin:.4rem 0 1rem}
 }
 .hero-cta .btn:hover{ background:var(--gold); color:#1a1206; }
 
-/* HERO */
+/* hero (no 'fixed' to avoid iOS bug) */
 .hero{
   position:relative; min-height:82vh; display:grid; place-items:center; padding:0; isolation:isolate;
-  background: url('images/hero.jpg') center/cover no-repeat fixed;
+  background: url('images/hero.jpg?v=1') center/cover no-repeat;
 }
 .hero::before{content:""; position:absolute; inset:0; z-index:0; background:linear-gradient(180deg,rgba(0,0,0,.36),rgba(0,0,0,.36))}
 .hero .inner{position:relative; z-index:1; text-align:center; padding:8vh 2rem 10vh}
@@ -97,7 +105,7 @@ p{color:var(--muted); margin:.4rem 0 1rem}
 .hero p{letter-spacing:.35em; text-transform:uppercase; opacity:.95}
 .hero .actions{margin-top:1.2rem}
 
-/* ICONS */
+/* icons */
 .icon{width:40px;height:40px; display:grid; place-items:center; border:1px solid rgba(217,181,111,.25); border-radius:11px; margin-bottom:.6rem}
 .icon svg{width:22px;height:22px;color:var(--gold)}
 
@@ -113,9 +121,9 @@ p{color:var(--muted); margin:.4rem 0 1rem}
   .site-nav a{display:block; padding:.6rem .8rem}
 }
 
-/* FOOTER */
+/* footer */
 .footer{border-top:1px solid rgba(217,181,111,.15); padding:1.2rem 0 2rem; color:var(--muted);
-        background:linear-gradient(180deg,#0b1510,#0a1711)}
+  background:linear-gradient(180deg,#0b1510,#0a1711)}
 .footer .row{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1rem}
 .footer a{color:var(--muted); text-decoration:none; margin-right:.8rem}
 .footer a:hover{color:var(--ink)}
@@ -128,7 +136,7 @@ p{color:var(--muted); margin:.4rem 0 1rem}
     <button class="menu" aria-expanded="false" aria-controls="mnav">Menu</button>
     <nav id="mnav" class="site-nav" aria-label="Main">
       <a href="#about">About</a>
-      <a href="#redefining">Philosophy</a>
+      <a href="#redefining">Redefining Luxury</a>
       <a href="#systems">Living Systems</a>
       <a href="#activities">Activities</a>
       <a href="#partners">Partners</a>
@@ -149,7 +157,7 @@ p{color:var(--muted); margin:.4rem 0 1rem}
     </div>
   </section>
 
-  <!-- ABOUT (wood) -->
+  <!-- ABOUT = WOOD -->
   <section id="about" class="section band wood">
     <div class="container">
       <h2>About Us</h2>
@@ -157,7 +165,7 @@ p{color:var(--muted); margin:.4rem 0 1rem}
     </div>
   </section>
 
-  <!-- REDEFINING LUXURY (smoke) -->
+  <!-- REDEFINING LUXURY = SMOKE -->
   <section id="redefining" class="section band smoke">
     <div class="container">
       <h2>Redefining Luxury</h2>
@@ -182,7 +190,7 @@ p{color:var(--muted); margin:.4rem 0 1rem}
     </div>
   </section>
 
-  <!-- LIVING SYSTEMS (plain deep green for breathing room) -->
+  <!-- LIVING SYSTEMS = PLAIN -->
   <section id="systems" class="section">
     <div class="container">
       <h2>Living Systems</h2>
@@ -206,29 +214,29 @@ p{color:var(--muted); margin:.4rem 0 1rem}
     </div>
   </section>
 
-  <!-- ACTIVITIES (plain deep green) -->
+  <!-- ACTIVITIES = PLAIN -->
   <section id="activities" class="section">
     <div class="container">
       <h2>Activities</h2>
       <p class="kicker">Immersion over consumption. Try these first experiences while the project grows:</p>
       <div class="grid-3">
         <article class="imgcard">
-          <img src="images/activity1.jpg" alt="Botanical walk">
+          <img src="images/activity1.jpg?v=1" alt="Botanical walk">
           <div class="card"><h3>Botanical Walk</h3><p>Native species & medicinal plants.</p></div>
         </article>
         <article class="imgcard">
-          <img src="images/activity2.jpg" alt="Butterfly house">
+          <img src="images/activity2.jpg?v=1" alt="Butterfly house">
           <div class="card"><h3>Mariposario</h3><p>Observe metamorphosis in a protected habitat.</p></div>
         </article>
         <article class="imgcard">
-          <img src="images/activity3.jpg" alt="Pier evenings">
+          <img src="images/activity3.jpg?v=1" alt="Pier evenings">
           <div class="card"><h3>Pier Evenings</h3><p>Solar-lit romance over the river.</p></div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ADOPT (canopy) -->
+  <!-- ADOPT = CANOPY -->
   <section id="adopt" class="section band canopy">
     <div class="container grid-2">
       <div>
@@ -248,21 +256,21 @@ p{color:var(--muted); margin:.4rem 0 1rem}
     </div>
   </section>
 
-  <!-- PARTNERS (plain deep green) -->
+  <!-- PARTNERS = PLAIN -->
   <section id="partners" class="section">
     <div class="container">
       <h2>Partners</h2>
       <p class="kicker">Trusted local allies who make the experience seamless.</p>
       <div class="grid-2">
         <article class="imgcard">
-          <img src="images/partners-mercedes.jpg" alt="Hotel Mercedes">
+          <img src="images/partners-mercedes.jpg?v=1" alt="Hotel Mercedes">
           <div class="card">
             <h3>Hotel Mercedes</h3>
             <p>The oldest hotel in town—your comfortable base before the journey to the retreat.</p>
           </div>
         </article>
         <article class="imgcard">
-          <img src="images/partners-lacabana.jpg" alt="La Cabaña Lodge">
+          <img src="images/lacabana.jpg?v=1" alt="La Cabaña Lodge">
           <div class="card">
             <h3>La Cabaña Lodge</h3>
             <p>Gateway to the island and jungle, operated by trusted local hosts.</p>
@@ -272,7 +280,7 @@ p{color:var(--muted); margin:.4rem 0 1rem}
     </div>
   </section>
 
-  <!-- CONTACT (clay) -->
+  <!-- CONTACT = CLAY -->
   <section id="contact" class="section band clay">
     <div class="container grid-2">
       <div>
@@ -294,7 +302,7 @@ p{color:var(--muted); margin:.4rem 0 1rem}
 <footer class="footer">
   <div class="container row">
     <div>Shinan Sacha</div>
-    <nav><a href="#about">About</a><a href="#redefining">Philosophy</a><a href="#systems">Systems</a><a href="#partners">Partners</a><a href="#adopt">Programs</a><a href="#contact">Contact</a></nav>
+    <nav><a href="#about">About</a><a href="#redefining">Redefining Luxury</a><a href="#systems">Systems</a><a href="#partners">Partners</a><a href="#adopt">Programs</a><a href="#contact">Contact</a></nav>
     <small>© <span id="y"></span> Shinan Sacha — Luxury without extraction.</small>
   </div>
 </footer>
