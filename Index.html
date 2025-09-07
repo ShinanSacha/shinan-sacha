@@ -44,7 +44,7 @@ p{color:var(--muted); margin:.4rem 0 1rem}
   background:linear-gradient(90deg,transparent, rgba(217,181,111,.9) 20%, rgba(217,181,111,.9) 80%, transparent);
   pointer-events:none;
 }
-.minh{ min-height:420px }  /* makes sure background is visible even if text is short */
+.minh{ min-height:440px } /* make sure bg shows even with little text */
 
 /* layout */
 .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(1rem,3vw,2rem)}
@@ -135,7 +135,7 @@ form.card button{margin-top:.4rem}
     <button class="menu" aria-expanded="false" aria-controls="mnav">Menu</button>
     <nav id="mnav" class="site-nav" aria-label="Main">
       <a href="#about">About</a>
-      <!-- Removed Redefining Luxury from top nav as requested -->
+      <!-- Redefining Luxury removed from top nav on purpose -->
       <a href="#systems">Living Systems</a>
       <a href="#activities">Activities</a>
       <a href="#adopt">Adopt a Tree</a>
@@ -156,22 +156,23 @@ form.card button{margin-top:.4rem}
     </div>
   </section>
 
-  <!-- ABOUT (with background applied inline) -->
-  <section id="about" class="section minh"
+  <!-- ABOUT (kept as band class – it already worked for you) -->
+  <section id="about" class="section band minh"
     style="background:
-      linear-gradient(180deg,rgba(0,0,0,.26),rgba(0,0,0,.30)),
-      url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;">
+      linear-gradient(180deg,rgba(0,0,0,.26),rgba(0,0,0,.30)) !important,
+      url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat !important;">
     <div class="container">
       <h2>About Us</h2>
       <p class="kicker"><strong>Shinan Sacha</strong> means “forest of knowledge.” A sanctuary in the making where luxury is measured by coherence—nature, technology, and culture aligned to give more than they take.</p>
     </div>
   </section>
 
-  <!-- REDEFINING LUXURY (kept as a section AFTER About; not in top nav) -->
+  <!-- REDEFINING LUXURY (AFTER About, not in top nav) -->
+  <!-- IMPORTANT: no 'band' class to avoid legacy overrides -->
   <section id="redefining" class="section minh"
     style="background:
-      linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.26)),
-      url('https://images.unsplash.com/photo-1502944550040-75345974929e?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;">
+      linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.26)) !important,
+      url('https://images.unsplash.com/photo-1502944550040-75345974929e?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat !important;">
     <div class="container">
       <h2>Redefining Luxury</h2>
       <div class="kicker">Old versus new—excess versus coherence.</div>
@@ -195,11 +196,11 @@ form.card button{margin-top:.4rem}
     </div>
   </section>
 
-  <!-- LIVING SYSTEMS (background inline) -->
+  <!-- LIVING SYSTEMS -->
   <section id="systems" class="section minh"
     style="background:
-      linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.24)),
-      url('https://images.unsplash.com/photo-1607705729272-6a6b7799e3e2?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;">
+      linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.24)) !important,
+      url('https://images.unsplash.com/photo-1607705729272-6a6b7799e3e2?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat !important;">
     <div class="container">
       <h2>Living Systems</h2>
       <div class="grid-3">
@@ -248,11 +249,11 @@ form.card button{margin-top:.4rem}
     </div>
   </section>
 
-  <!-- ADOPT A TREE (background inline) -->
+  <!-- ADOPT A TREE -->
   <section id="adopt" class="section minh"
     style="background:
-      linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.30)),
-      url('https://images.unsplash.com/photo-1605727216805-0e36f1cf0c36?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;">
+      linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.30)) !important,
+      url('https://images.unsplash.com/photo-1605727216805-0e36f1cf0c36?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat !important;">
     <div class="container">
       <h2>Adopt a Tree</h2>
       <p>Help reforest and protect habitats. Sponsor a tree and receive updates, GPS tagging, and seasonal notes.</p>
@@ -283,11 +284,11 @@ form.card button{margin-top:.4rem}
     </div>
   </section>
 
-  <!-- CONTACT (background inline) -->
-  <section id="contact" class="section minh grid"
+  <!-- CONTACT -->
+  <section id="contact" class="section minh"
     style="background:
-      linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.28)),
-      url('https://images.unsplash.com/photo-1601645199213-3dd98ec6c9dc?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;">
+      linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.28)) !important,
+      url('https://images.unsplash.com/photo-1601645199213-3dd98ec6c9dc?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat !important;">
     <div class="container grid-2">
       <div>
         <h2>Contact / Bookings</h2>
@@ -310,7 +311,7 @@ form.card button{margin-top:.4rem}
     <div>Shinan Sacha</div>
     <nav>
       <a href="#about">About</a>
-      <!-- Not listed in nav on purpose -->
+      <!-- Redefining not listed in nav on purpose -->
       <a href="#systems">Systems</a>
       <a href="#activities">Activities</a>
       <a href="#adopt">Adopt a Tree</a>
